@@ -65,6 +65,10 @@ header{
     margin:0;
     padding:0;
     height:100vh;
+    background-color: #301f05;
+}
+
+.main-bg{
     background-image:linear-gradient(rgba(0, 0, 0, 0.55)), url(img/Underdog.png);
     background-size: cover;
 }
