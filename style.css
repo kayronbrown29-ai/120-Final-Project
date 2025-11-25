@@ -115,3 +115,56 @@ header{
 .show-more ion-icon{
     font-size:150%;
 }
+
+
+.account-form{
+    max-width:1140px;
+    margin:0 auto;
+    padding:1%;
+    padding-bottom:5%;
+    background-color: #4d5774;
+    height: auto;
+    text-align:center;
+    font-size:150%;
+    border-radius:10px;
+}
+.account-form input{
+    font-size:125%;
+    width:75%;
+}
+.sign-up{
+    margin:0 auto;
+    padding:0;
+}
+.btn-account{
+    background-color: #f5bd6a;
+    color:#4d5774;
+    border: 2px solid #4d5774;
+    border-radius:25px;
+}
+.btn-account:hover{
+    color:#f5bd6a;
+    background-color:#4d5774;
+    border: 2px solid #f5bd6a;
+}
+input[type="submit"]:hover{
+    transition:background 0.2s, color 0.2s;
+}
+input[type="submit"]{
+    transition:background 0.2s, color 0.2s;
+    width:25%;
+}
+input[type="checkbox"]{
+    width:2%;
+    transform: scale(2);
+}
+label[for="newsletter"]{
+    font-size:75%;
+}
+.newsletter-box{
+    width:50%;
+    text-align:left;
+}
+.focalpoint{
+    height:auto;
+}
