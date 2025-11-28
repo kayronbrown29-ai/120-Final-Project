@@ -1,0 +1,29 @@
+{
+  "name": "120-final-project",
+  "version": "1.0.0",
+  "description": "A fully functioning restaurant webpage usable by both the customer, and the manager",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kayronbrown29-ai/120-Final-Project.git"
+  },
+  "keywords": [
+    "html",
+    "css",
+    "javascript",
+    "npm"
+  ],
+  "author": "Kayron, Byron, and Marco",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/kayronbrown29-ai/120-Final-Project/issues"
+  },
+  "homepage": "https://github.com/kayronbrown29-ai/120-Final-Project#readme",
+  "dependencies": {
+    "bcryptjs": "^3.0.3",
+    "dotenv": "^17.2.3"
+  }
+}
