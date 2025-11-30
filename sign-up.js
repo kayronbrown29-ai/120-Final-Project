@@ -134,7 +134,7 @@ document.addEventListener("DOMContentLoaded", function () {
         showMessage("loginMessage", "Login successful! Redirecting…", "success", 1500);
         // Give the user a brief moment to see the message, then redirect
         setTimeout(() => {
-          window.location.href = "index.html";
+          window.location.href = "menu.html";
         }, 600);
       } else {
         showMessage("loginMessage", result.message || "Login failed", "error");
