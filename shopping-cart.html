@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title>Document | Shopping Cart</title>
+        <link rel="stylesheet" href="style.css">
+    </head>
+
+    <body> 
+        <nav class="standalone">
+            <img src="img/thumbnail_underdog.png" class="nav-icon">
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="menu.html">Menu</a></li>
+                <li><a href='sign-up.html'>Register</a></li>
+                <li><a href="#">Log In</a></li>
+            </ul>
+        </nav>
+
+        <main class="cart-page">
+            <h1>Model Shopping Cart</h1>
+
+            <article class="cart-list">
+                <div class="cart-item">
+                    <figure class="cart-photo">
+                        <img src="img/coconut.jpg" class="item-photo">
+                    </figure>
+                    <div class="text-container">
+                        <h3>Food Item</h3>
+                        <h2>$5.99</h2>
+                    </div>
+                    <button typ="button" onlick="removeItem" class="item-del">Remove Item</button>
+                </div>
+
+                <div class="cart-item">
+                    <figure class="cart-photo">
+                        <img src="img/coconut.jpg" class="item-photo">
+                    </figure>
+                    <div class="text-container">
+                        <h3>Food Item</h3>
+                        <h2>$5.99</h2>
+                    </div>
+                    <button typ="button" onlick="removeItem" class="item-del">Remove Item</button>
+                </div>
+            </article>
+
+            <aside class="price-total"></aside>
+        </main>
+    </body>
+</html>
