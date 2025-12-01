@@ -168,3 +168,38 @@ label[for="newsletter"]{
 .focalpoint{
     height:100vh;
 }
+.standalone{
+    background-color:#f5bd6a;
+}
+.standalone a{
+    color:#4d5774;
+}
+.menu{
+    width:100vw;
+    height:auto;
+}
+.menu-page h1{
+    text-align:center;
+}
+.menu{
+    max-width:1140px;
+    display:flex;
+    flex-direction:row;
+    height:auto;
+    margin:0 auto;
+    padding:0;
+}
+.menu-item{
+    width:25%;
+    background-color: #f5bd6a;
+    padding:1%;
+    margin:1%;
+    color:#301f05;
+}
+.menu-img{
+    margin:0;
+    padding:0;
+}
+.item-photo{
+    width:100%;
+}
