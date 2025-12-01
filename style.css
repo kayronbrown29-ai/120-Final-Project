@@ -170,6 +170,7 @@ label[for="newsletter"]{
 }
 .standalone{
     background-color:#f5bd6a;
+    
 }
 .standalone a{
     color:#4d5774;
@@ -187,7 +188,8 @@ label[for="newsletter"]{
     flex-direction:row;
     height:auto;
     margin:0 auto;
-    padding:0;
+    padding:2% 0;
+    justify-content:center;
 }
 .menu-item{
     width:25%;
@@ -202,4 +204,11 @@ label[for="newsletter"]{
 }
 .item-photo{
     width:100%;
+}
+.btn-order:link, .btn-order:visited{
+    color:white;
+}
+.btn-order:hover{
+    background-color: #301f05;
+    color: white;
 }
