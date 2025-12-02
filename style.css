@@ -93,7 +93,6 @@ nav {
     opacity: 0.9;
 }
 
-/* Button */
 .btn-account {
     width: 100%;
     padding: 15px;
@@ -112,7 +111,6 @@ nav {
     transform: scale(1.02);
 }
 
-/* Mobile */
 @media (max-width: 600px) {
     .account-form {
         margin: 40px 20px;

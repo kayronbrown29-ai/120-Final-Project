@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title>Document | Shopping Cart</title>
+        <link rel="stylesheet" href="style.css">
+    </head>
+
+    <body> 
+        <nav class="standalone">
+            <img src="img/thumbnail_underdog.png" class="nav-icon">
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="menu.html">Menu</a></li>
+                <li><a href='sign-up.html'>Register</a></li>
+                <li><a href="#">Log In</a></li>
+            </ul>
+        </nav>
+
+        <main class="cart-page">
+            <h1>Model Shopping Cart</h1>
+            <section class="cart-container">
+                <article class="cart-list">
+                    <div class="cart-item">
+                        <figure class="cart-photo">
+                            <img src="img/coconut.jpg" class="item-photo">
+                        </figure>
+                        <div class="text-container">
+                            <h3>Food Item</h3>
+                            <h2>$5.99</h2>
+                        </div>
+                        <button typ="button" onlick="removeItem" class="item-del">Remove Item</button>
+                    </div>
+                    <br>
+                    <div class="cart-item">
+                        <figure class="cart-photo">
+                            <img src="img/coconut.jpg" class="item-photo">
+                        </figure>
+                        <div class="text-container">
+                            <h3>Food Item</h3>
+                            <h2>$5.99</h2>
+                        </div>
+                        <button typ="button" onlick="removeItem" class="item-del">Remove Item</button>
+                    </div>
+                </article>
+
+                <aside class="price-total">
+                    <div class="added-price">
+                        <br>
+                        <p>Items Subtotal</p>
+                        <h2>$11.98</h2>
+                        <br>
+                        <p>Taxes and fees</p>
+                        <h2>$2.50</h2>
+                        <br>
+                        <hr>
+                        <br>
+                        <p>Total</p>
+                        <h1>$14.48</h1>
+                        <br>
+                    </div>
+                </aside>
+            </section>
+        </main>
+    </body>
+</html>
