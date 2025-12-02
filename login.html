@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>UnderDog | Log In</title>
+    <link rel="stylesheet" href="login.css">
+</head>
+
+<body>
+
+<header class="focalpoint">
+    <nav>
+        <img src="img/thumbnail_underdog.png" class="nav-icon">
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="#">Menu</a></li>
+            <li><a href="sign-up.html">Sign Up</a></li>
+        </ul>
+    </nav>
+
+    <br><br>
+
+    <article class="account-form">
+        <h1>Log In</h1>
+
+        <form id="loginForm">
+
+            <input type="email" id="loginEmail" placeholder="Email" required>
+            <br><br>
+
+            <input type="password" id="loginPassword" placeholder="Password" required>
+            <br><br>
+
+            <input type="submit" class="btn btn-account" value="Log In">
+
+        </form>
+    </article>
+</header>
+
+<script>
+    document.getElementById("loginForm").addEventListener("submit", function(e) {
+        e.preventDefault();
+
+        const email = document.getElementById("loginEmail").value;
+        const password = document.getElementById("loginPassword").value;
+
+        const savedUser = JSON.parse(localStorage.getItem("underdogUser"));
+
+        if (!savedUser) {
+            alert("No saved account found. Please sign up first.");
+            return;
+        }
+
+        if (email === savedUser.email) {
+            localStorage.setItem("isLoggedIn", "true");
+            localStorage.setItem("loggedInEmail", email);
+
+            alert("Login successful!");
+            window.location.href = "index.html";
+        } else {
+            alert("Email not found. Please try again or sign up.");
+        }
+    });
+</script>
+
+
+</body>
+</html>

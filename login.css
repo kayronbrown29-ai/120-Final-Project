@@ -5,12 +5,10 @@
     font-family: Arial, Helvetica, sans-serif;
 }
 
-
 body {
     background: #2b1a12; 
     color: #fff;
 }
-
 
 .focalpoint {
     min-height: 100vh;
@@ -59,6 +57,7 @@ nav {
         inset 0 0 10px rgba(255,255,255,0.05);
 }
 
+
 .account-form h1 {
     text-align: center;
     margin-bottom: 30px;
@@ -71,7 +70,7 @@ nav {
 .account-form input[type="text"] {
     width: 100%;
     padding: 15px;
-    background: #091429; 
+    background: #091429;
     border: 1px solid orange;
     outline: none;
     color: white;
@@ -133,7 +132,6 @@ nav {
 .password-container input {
     width: 100%;
     padding-right: 40px; 
-}
 
 .toggle-password {
     position: absolute;

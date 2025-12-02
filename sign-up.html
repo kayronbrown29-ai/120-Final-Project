@@ -1,42 +1,90 @@
 <!DOCTYPE html>
-
 <html>
-    <head>
-        <title>Document | Sign Up</title>
-        <link rel="stylesheet" href="style.css">
-    </head>
+<head>
+    <title>UnderDog | Sign Up</title>
+    <link rel="stylesheet" href="style.css">
+</head>
 
-    <body>
-        <header class="focalpoint">
-            <nav>
-                <img src="img/thumbnail_underdog.png" class="nav-icon">
-                <ul class="nav-links">
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="#">Menu</a></li>
-                    <li><a href="#">Log In</a></li>
-                </ul>
-            </nav>
+<body>
+
+<header class="focalpoint">
+    <nav>
+        <img src="img/thumbnail_underdog.png" class="nav-icon">
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="#">Menu</a></li>
+            <li><a href="login.html">Log In</a></li>
+        </ul>
+    </nav>
+
+    <br><br>
+
+    <article class="account-form">
+        <h1>Sign Up</h1>
+
+        <form class="sign-up" id="signupForm">
+
+            <input type="email" id="email" placeholder="Email" required>
             <br><br>
-            <article class="account-form">
-                <h1>Sign Up</h1>
-                <form class="sign-up">
-                    <input type="email" id="email" name="email" placeholder="Email" required>
-                    <br><br><br>
-                    <input type="text" id="phone-number" name="phone-number" placeholder="Phone Number" required>
-                    <br><br><br>
-                    <input type="password" id="password" name="password" placeholder="Password" required>
-                    <br><br>
-                    <input type="confirm-password" id="confirm-password" name="confirm-password" placeholder="Confirm Password" required>
-                    <br><br>
-                    <div class="newsletter-box">
-                        <input type="checkbox" name="newsletter" value="newsletter">
-                        <label for="newsletter">I would like to subscribe to the UnderDog newsletter and receive special discounts through my email.</label>
-                    </div>
-                    <br><br><br>
-                    <input type="submit" id="button" name="create-account" class="btn btn-account">
-                </form>
-            </aritcle>
-        </header>
-        <script src="sign-up.js"></script>
-    </body>
+
+            <input type="text" id="phone" placeholder="Phone Number" required>
+            <br><br>
+
+            <input type="password" id="password" placeholder="Password" required>
+            <br><br>
+
+            <input type="password" id="confirm-password" placeholder="Confirm Password" required>
+            <br><br>
+
+            <div class="newsletter-box">
+                <input type="checkbox" id="newsletter">
+                <label for="newsletter">
+                    I would like to subscribe to the UnderDog newsletter and receive special discounts.
+                </label>
+            </div>
+
+            <br><br>
+
+            <input type="submit" class="btn btn-account" value="Create Account">
+
+        </form>
+    </article>
+</header>
+
+<script>
+    document.getElementById("signupForm").addEventListener("submit", function(e) {
+        e.preventDefault();
+
+        const email = document.getElementById("email").value;
+        const phone = document.getElementById("phone").value;
+        const password = document.getElementById("password").value;
+        const confirmPassword = document.getElementById("confirm-password").value;
+
+        if (password !== confirmPassword) {
+            alert("Passwords do not match!");
+            return;
+        }
+
+        
+        const saveInfo = confirm("Would you like to save your information for next time?");
+
+        if (saveInfo) {
+            localStorage.setItem("underdogUser", JSON.stringify({
+                email: email,
+                phone: phone
+            }));
+        }
+
+        
+        localStorage.setItem("isLoggedIn", "true");
+        localStorage.setItem("loggedInEmail", email);
+
+        alert("Welcome to UnderDog! You are now logged in.");
+
+        
+        window.location.href = "index.html";
+    });
+</script>
+
+</body>
 </html>
