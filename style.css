@@ -64,7 +64,7 @@ header{
     max-width:100vw;
     margin:0;
     padding:0;
-    height:100vh;
+    height:auto;
     background-color: #301f05;
 }
 
@@ -160,6 +160,12 @@ input[type="checkbox"]{
 }
 label[for="newsletter"]{
     font-size:75%;
+}
+a.box-link:hover{
+    color:#f5bd6a
+}
+.page-space{
+    margin:150px;
 }
 .newsletter-box{
     width:50%;

@@ -1,4 +1,4 @@
-// sign-up.js - Signup form logic
+// login.js - Login form logic
 
 // Helper to build API path; if the page was loaded via file://, fallback to localhost:3000
 function apiPath(path) {
@@ -45,56 +45,44 @@ function clearMessage(containerId) {
 }
 
 document.addEventListener("DOMContentLoaded", function () {
-  const signupForm = document.querySelector(".sign-up");
+  const loginForm = document.querySelector(".login-form");
 
-  // Signup form submit
-  if (signupForm) {
-    signupForm.addEventListener("submit", async function (event) {
+  // Login form submit
+  if (loginForm) {
+    loginForm.addEventListener("submit", async function (event) {
       event.preventDefault();
 
-      const passwordInput = document.getElementById("password");
-      const confirmPasswordInput = document.getElementById("confirm-password");
-      const emailInput = document.getElementById("email");
-
-      if (passwordInput.value !== confirmPasswordInput.value) {
-        showMessage("signupMessage", "Passwords do not match!", "error");
-        return;
-      }
-
-      const email = emailInput.value;
+      const email = document.getElementById("loginEmail").value;
+      const password = document.getElementById("loginPassword").value;
 
       try {
-        // Simple signup: call /signup directly (no email verification)
-        const phone = document.getElementById("phone-number").value;
-        const password = document.getElementById("password").value;
-        const response = await fetch(apiPath("/signup"), {
+        const response = await fetch(apiPath("/login"), {
           method: "POST",
           headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ email, phone, password }),
+          body: JSON.stringify({ email, password }),
         });
-        const result = await response.json().catch(() => ({}));
+
+        const result = await response.json();
+
         if (response.ok && result.success) {
+          // Store user email in localStorage
+          localStorage.setItem("userEmail", email);
           showMessage(
-            "signupMessage",
-            "Account created. You can now log in.",
+            "loginMessage",
+            "Login successful! Redirecting…",
             "success",
-            3000
+            1500
           );
-          signupForm.reset();
-          // Redirect to login page after successful signup
+          // Give the user a brief moment to see the message, then redirect
           setTimeout(() => {
-            window.location.href = "/login.html";
-          }, 2000);
+            window.location.href = "/menu.html";
+          }, 600);
         } else {
-          showMessage(
-            "signupMessage",
-            result.message || "Signup failed",
-            "error"
-          );
+          showMessage("loginMessage", result.message || "Login failed", "error");
         }
       } catch (error) {
-        console.error("Signup error:", error);
-        showMessage("signupMessage", "Signup failed. Please try again.", "error");
+        console.error("Login error:", error);
+        showMessage("loginMessage", "Login failed. Please try again.", "error");
       }
     });
   }

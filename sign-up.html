@@ -1,42 +1,48 @@
 <!DOCTYPE html>
-
 <html>
     <head>
-        <title>Document | Sign Up</title>
-        <link rel="stylesheet" href="style.css">
+        <title>Document Sign Up</title>
+        <link rel="stylesheet" href="style.css" />
     </head>
-
     <body>
         <header class="focalpoint">
-            <nav>
-                <img src="img/thumbnail_underdog.png" class="nav-icon">
-                <ul class="nav-links">
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="menu.html">Menu</a></li>
-                    <li><a href="#">Log In</a></li>
-                </ul>
-            </nav>
-            <br><br>
-            <article class="account-form">
+        <nav class="standalone">
+            <img src="img/thumbnail_underdog.png" class="nav-icon">
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="menu.html">Menu</a></li>
+                <li><a href="shopping-cart.html">Delivery</a></li>
+            </ul>
+        </nav>
+        <br><br>
+        <article class="account-form">
+            <!-- Signup Form -->
+            <div id="signupForm" class="form-container active">
                 <h1>Sign Up</h1>
+                <p>Already have an account? <a href="login.html" class="box-link">Log In</a></p>
                 <form class="sign-up">
-                    <input type="email" id="email" name="email" placeholder="Email" required>
-                    <br><br><br>
-                    <input type="text" id="phone-number" name="phone-number" placeholder="Phone Number" required>
-                    <br><br><br>
-                    <input type="password" id="password" name="password" placeholder="Password" required>
-                    <br><br>
-                    <input type="confirm-password" id="confirm-password" name="confirm-password" placeholder="Confirm Password" required>
-                    <br><br>
-                    <div class="newsletter-box">
-                        <input type="checkbox" name="newsletter" value="newsletter">
-                        <label for="newsletter">I would like to subscribe to the UnderDog newsletter and receive special discounts through my email.</label>
-                    </div>
-                    <br><br><br>
-                    <input type="submit" id="button" name="create-account" class="btn btn-account">
+                <div id="signupMessage" class="form-message" role="status" aria-live="polite"></div>
+                <input type="email" id="email" name="email" placeholder="Email" required>
+                  <br><br><br>
+                  <input type="text" id="phone-number" name="phone-number" placeholder="Phone Number" required>
+                  <br><br><br>
+                  <input type="password" id="password" name="password" placeholder="Password" required>
+                  <br><br>
+                  <input type="password"v id="confirm-password"v name="confirm-password"v placeholder="Confirm Password"v required>
+                  <br><br>
+                  <div class="newsletter-box">
+                    <input type="checkbox" name="newsletter" value="newsletter">
+                    <label for="newsletter">I would like to subscribe to the restaurant's newsletter and receive special discounts through my email.</label>
+                  </div>
+                  <br>
+                  <p>NOTE: To use the sign-up and login feature, you need to open the terminal in your ide, and enter "node server.js"</p>
+                  <br>
+                  <input type="submit" id="button" name="create-account" class="btn btn-account" value="Create Account">
                 </form>
-            </aritcle>
-        </header>
-        <script src="sign-up.js"></script>
-    </body>
+            </div>
+        </article>
+    </header>
+
+    <script src="sign-up.js"></script>
+  </body>
 </html>

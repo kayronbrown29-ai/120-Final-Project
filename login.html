@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Document Login</title>
+        <link rel="stylesheet" href="style.css" />
+    </head>
+    <body>
+        <header class="focalpoint">
+        <nav class="standalone">
+            <img src="img/thumbnail_underdog.png" class="nav-icon" />
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="menu.html">Menu</a></li>
+                <li><a href="shopping-cart.html">Delivery</a></li>
+            </ul>
+        </nav>
+        <div class="page-space"></div>
+        <article class="account-form">
+            <!-- Login Form -->
+            <div id="loginForm" class="form-container active">
+                <h1>Log In</h1>
+                <p>Don't have an account? <a href="sign-up.html" class="box-link">Sign Up</a></p>
+                <form class="login-form">
+                    <div id="loginMessage" class="form-message" role="status" aria-live="polite"></div>
+                    <input type="email" id="loginEmail" placeholder="Email" required>
+                    <br><br><br>
+                    <input id="loginPassword" placeholder="Password" required type="password">
+                    <br>
+                    <p>NOTE: To use the sign-up and login feature, you need to open the terminal in your ide, and enter "node server.js"</p>
+                    <br>
+                    <input type="submit" class="btn btn-account" value="Log In">
+                </form>
+            </div>
+        </article>
+    </header>
+
+    <script src="login.js"></script>
+  </body>
+</html>
