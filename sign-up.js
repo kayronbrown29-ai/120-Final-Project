@@ -1,182 +1,133 @@
-// sign-up.js - Complete frontend logic for all forms
+// server.js
 
-// Form visibility functions
-function showSignupForm() {
-  document.getElementById("signupForm").classList.add("active");
-  document.getElementById("loginForm").classList.remove("active");
-  document.getElementById("resetForm").classList.remove("active");
-  // document.getElementById("verificationSignup").style.display = "none"; // disabled
-}
+require("dotenv").config();
+const express = require("express");
+// [disabled: email verification removed]
+// const nodemailer = require("nodemailer");
+const bodyParser = require("body-parser");
+const bcrypt = require("bcryptjs");
+const cors = require("cors");
+const fs = require("fs");
 
-function showLogin() {
-  document.getElementById("signupForm").classList.remove("active");
-  document.getElementById("loginForm").classList.add("active");
-  document.getElementById("resetForm").classList.remove("active");
-}
+const app = express();
+app.use(cors());
+app.use(bodyParser.json());
+const path = require("path");
+const USERS_FILE = path.join(__dirname, "users.json");
 
-function showResetForm() {
-  document.getElementById("signupForm").classList.remove("active");
-  document.getElementById("loginForm").classList.remove("active");
-  document.getElementById("resetForm").classList.add("active");
-  document.getElementById("resetStep1").style.display = "block";
-  document.getElementById("resetStep2").style.display = "none";
-}
+// Serve static files from the project root (html, css, js, etc.) so visiting
+// http://localhost:3000/sign-up.html serves the signup page.
+app.use(express.static(path.join(__dirname, "/")));
 
-// Global variables to store form data
-let currentSignupEmail = "";
-let currentResetEmail = "";
+// In-memory user storage for demo (replace with a real database)
+const users = new Map();
 
-// Signup form handler
-// Helper to build API path; if the page was loaded via file://, fallback to localhost:3000
-function apiPath(path) {
+function loadUsersFromDisk() {
   try {
-    const origin = window.location.origin;
-    if (origin && origin !== "null") {
-      return `${origin}${path}`;
-    }
-  } catch (e) {
-    // ignore — we'll use the default
-  }
-  return `http://localhost:3000${path}`;
-}
-
-// MESSAGE HELPERS: show/clear messages in UI containers
-function showMessage(containerId, text, type = "error", timeout = 7000) {
-  try {
-    const el = document.getElementById(containerId);
-    if (!el) return;
-    el.classList.remove("error", "info", "success");
-    el.classList.add(type);
-    el.textContent = text;
-    el.style.display = "block";
-    if (timeout > 0) {
-      window.setTimeout(() => {
-        clearMessage(containerId);
-      }, timeout);
-    }
-  } catch (e) {
-    console.error("showMessage error:", e);
-  }
-}
-
-function clearMessage(containerId) {
-  try {
-    const el = document.getElementById(containerId);
-    if (!el) return;
-    el.textContent = "";
-    el.style.display = "none";
-    el.classList.remove("error", "info", "success");
-  } catch (e) {
-    console.error("clearMessage error:", e);
-  }
-}
-
-document.addEventListener("DOMContentLoaded", function () {
-  const signupForm = document.querySelector(".sign-up");
-  const loginForm = document.querySelector(".login-form");
-
-  // Signup form submit
-  signupForm.addEventListener("submit", async function (event) {
-    event.preventDefault();
-
-    const passwordInput = document.getElementById("password");
-    const confirmPasswordInput = document.getElementById("confirm-password");
-    const emailInput = document.getElementById("email");
-
-    if (passwordInput.value !== confirmPasswordInput.value) {
-      showMessage("signupMessage", "Passwords do not match!", "error");
-      return;
-    }
-
-    const email = emailInput.value;
-    currentSignupEmail = email;
-
-    try {
-      // Simple signup: call /signup directly (no email verification)
-      const phone = document.getElementById("phone-number").value;
-      const password = document.getElementById("password").value;
-      const response = await fetch(apiPath("/signup"), {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ email, phone, password }),
-      });
-      const result = await response.json().catch(() => ({}));
-      if (response.ok && result.success) {
-        showMessage("signupMessage", "Account created. You can now log in.", "success", 3000);
-        signupForm.reset();
-        showLogin();
-      } else {
-        showMessage("signupMessage", result.message || "Signup failed", "error");
+    if (fs.existsSync(USERS_FILE)) {
+      const data = JSON.parse(fs.readFileSync(USERS_FILE, "utf-8"));
+      for (const [email, record] of Object.entries(data)) {
+        users.set(email, record);
       }
-    } catch (error) {
-      console.error("Signup error:", error);
-      showMessage("signupMessage", "Signup failed. Please try again.", "error");
+      console.log(`Loaded ${users.size} users from disk`);
     }
-  });
+  } catch (e) {
+    console.error(
+      "Failed to load users from disk:",
+      e && e.message ? e.message : e
+    );
+  }
+}
 
-  // Login form submit
-  loginForm.addEventListener("submit", async function (event) {
-    event.preventDefault();
+function persistUsersToDisk() {
+  try {
+    const obj = Object.fromEntries(users);
+    fs.writeFileSync(USERS_FILE, JSON.stringify(obj, null, 2));
+  } catch (e) {
+    console.error(
+      "Failed to persist users:",
+      e && e.message ? e.message : e
+    );
+  }
+}
 
-    const email = document.getElementById("loginEmail").value;
-    const password = document.getElementById("loginPassword").value;
+// Initialize users from disk at server start
+loadUsersFromDisk();
 
-    try {
-      const response = await fetch(apiPath("/login"), {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ email, password }),
-      });
-
-      const result = await response.json();
-
-      if (response.ok && result.success) {
-        showMessage("loginMessage", "Login successful! Redirecting…", "success", 1500);
-        // Give the user a brief moment to see the message, then redirect
-        setTimeout(() => {
-          window.location.href = "menu.html";
-        }, 600);
-      } else {
-        showMessage("loginMessage", result.message || "Login failed", "error");
-      }
-    } catch (error) {
-      console.error("Login error:", error);
-      showMessage("loginMessage", "Login failed. Please try again.", "error");
-    }
-  });
+// [new] Simple signup without email verification
+app.post("/signup", async (req, res) => {
+  const { email, phone, password } = req.body;
+  if (!email || !phone || !password) {
+    return res
+      .status(400)
+      .json({ success: false, message: "All fields are required" });
+  }
+  if (users.has(email)) {
+    return res
+      .status(400)
+      .json({ success: false, message: "User already exists" });
+  }
+  try {
+    const passwordHash = await bcrypt.hash(password, 10);
+    users.set(email, { phone, passwordHash });
+    persistUsersToDisk();
+    return res.json({ success: true });
+  } catch (e) {
+    return res
+      .status(500)
+      .json({ success: false, message: "Failed to create user" });
+  }
 });
 
-// Simple password reset without code
-function resetPasswordSimple() {
-  const email = document.getElementById("resetEmail").value;
-  const newPassword = document.getElementById("newPassword").value;
-  const confirmNewPassword = document.getElementById("confirmNewPassword").value;
+// Login endpoint
+app.post("/login", async (req, res) => {
+  const { email, password } = req.body;
+  if (!email || !password)
+    return res
+      .status(400)
+      .json({ success: false, message: "Email and password required" });
 
-  if (!email) {
-    showMessage("resetMessage", "Please enter your email", "error");
-    return;
-  }
-  if (newPassword !== confirmNewPassword) {
-    showMessage("resetSimpleMessage", "New passwords do not match", "error");
-    return;
-  }
+  const user = users.get(email);
+  if (!user)
+    return res.status(400).json({ success: false, message: "User not found" });
 
-  fetch(apiPath("/reset-password"), {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ email, newPassword }),
-  })
-    .then((response) => response.json())
-    .then((result) => {
-      if (result.success) {
-        showMessage("resetSimpleMessage", "Password reset successful! You can now log in.", "success", 4000);
-        showLogin();
-      } else {
-        showMessage("resetSimpleMessage", result.message || "Reset failed", "error");
-      }
-    })
-    .catch((error) => {
-      console.error("Error:", error);
-      showMessage("resetSimpleMessage", "Reset failed", "error");
-    });
-}
+  const passwordMatch = await bcrypt.compare(password, user.passwordHash);
+  if (!passwordMatch)
+    return res
+      .status(400)
+      .json({ success: false, message: "Incorrect password" });
+
+  res.json({ success: true, message: "Logged in successfully" });
+});
+
+// Reset password endpoint (simple, no code)
+app.post("/reset-password", async (req, res) => {
+  const { email, newPassword } = req.body;
+  if (!email || !newPassword) {
+    return res
+      .status(400)
+      .json({ success: false, message: "Email and new password are required" });
+  }
+  if (!users.has(email)) {
+    return res.status(400).json({ success: false, message: "User not found" });
+  }
+  try {
+    const passwordHash = await bcrypt.hash(newPassword, 10);
+    users.set(email, { ...users.get(email), passwordHash });
+    persistUsersToDisk();
+    return res.json({ success: true, message: "Password reset successful" });
+  } catch (e) {
+    return res
+      .status(500)
+      .json({ success: false, message: "Failed to reset password" });
+  }
+});
+
+// Start the server
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, () => {
+  console.log(`Server listening on port ${PORT}`);
+  console.log(
+    `Serving static files. Open http://localhost:${PORT}/sign-up.html to test the signup form.`
+  );
+});

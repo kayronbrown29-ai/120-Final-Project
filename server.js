@@ -7,11 +7,13 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const bcrypt = require("bcryptjs");
 const cors = require("cors");
+const fs = require("fs");
 
 const app = express();
 app.use(cors());
 app.use(bodyParser.json());
 const path = require("path");
+const USERS_FILE = path.join(__dirname, "users.json");
 
 // Serve static files from the project root (html, css, js, etc.) so visiting
 // http://localhost:3000/sign-up.html serves the signup page.
@@ -20,9 +22,37 @@ app.use(express.static(path.join(__dirname, "/")));
 // In-memory user storage for demo (replace with a real database)
 const users = new Map();
 
-// In-memory code storage for verification and password reset (disabled)
-// const verificationCodes = new Map();
-// const resetCodes = new Map();
+function loadUsersFromDisk() {
+  try {
+    if (fs.existsSync(USERS_FILE)) {
+      const data = JSON.parse(fs.readFileSync(USERS_FILE, "utf-8"));
+      for (const [email, record] of Object.entries(data)) {
+        users.set(email, record);
+      }
+      console.log(`Loaded ${users.size} users from disk`);
+    }
+  } catch (e) {
+    console.error(
+      "Failed to load users from disk:",
+      e && e.message ? e.message : e
+    );
+  }
+}
+
+function persistUsersToDisk() {
+  try {
+    const obj = Object.fromEntries(users);
+    fs.writeFileSync(USERS_FILE, JSON.stringify(obj, null, 2));
+  } catch (e) {
+    console.error(
+      "Failed to persist users:",
+      e && e.message ? e.message : e
+    );
+  }
+}
+
+// Initialize users from disk at server start
+loadUsersFromDisk();
 
 
 // [new] Simple signup without email verification
@@ -41,6 +71,7 @@ app.post("/signup", async (req, res) => {
   try {
     const passwordHash = await bcrypt.hash(password, 10);
     users.set(email, { phone, passwordHash });
+    persistUsersToDisk();
     return res.json({ success: true });
   } catch (e) {
     return res
@@ -48,6 +79,7 @@ app.post("/signup", async (req, res) => {
       .json({ success: false, message: "Failed to create user" });
   }
 });
+
 
 // Login endpoint
 app.post("/login", async (req, res) => {
@@ -85,6 +117,7 @@ app.post("/reset-password", async (req, res) => {
   try {
     const passwordHash = await bcrypt.hash(newPassword, 10);
     users.set(email, { ...users.get(email), passwordHash });
+    persistUsersToDisk();
     return res.json({ success: true, message: "Password reset successful" });
   } catch (e) {
     return res
