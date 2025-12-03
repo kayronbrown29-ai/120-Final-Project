@@ -50,7 +50,7 @@
     <button class="category-btn" data-category="pasta">Prime Time Pasta</button>
     <button class="category-btn" data-category="desserts">Championship Treats</button>
     <button class="category-btn" data-category="drinks">Bullpen Beverages</button>
-    <button class="category-btn" data-category="alcohol">
+    <button class="category-btn" data-category="alcohol">All Star Sips</button>
 </div>
 
 
@@ -58,48 +58,48 @@
 <section class="menu" data-category="entrees">
     <article class="menu-item" id="burger">
         <img src="img/Burger.jpg" class="item-photo">
-        <h3>The Comeback Burger</h3>
-        <h2>$10.99</h2>
+        <h3 class="menu-item-name">The Comeback Burger</h3>
+        <h2 class="menu-item-price">$10.99</h2>
         <a href="#" class="btn-order" onclick="addItem(burger)">Add to Order</a>
     </article>
     <article class="menu-item" id="overtimewings">
         <img src="img/overtime-wings.jpg" class="item-photo">
-        <h3>Overtime Buffalo Wings</h3>
-        <h2>$12.99</h2>
+        <h3 class="menu-item-name">Overtime Buffalo Wings</h3>
+        <h2 class="menu-item-price">$12.99</h2>
         <a href="#" class="btn-order" onclick="addItem(overtimewings)">Add to Order</a>
     </article>
     <article class="menu-item">
         <img src="img/Cheesesteak.jpg" class="item-photo">
-        <h3>Fly High Philly Cheesesteak</h3>
-        <h2>$11.49</h2>
+        <h3 class="menu-item-name">Fly High Philly Cheesesteak</h3>
+        <h2 class="menu-item-price">$11.49</h2>
         <a href="#" class="btn-order">Add to Order</a>
     </article>
     <article class="menu-item" id="blitz">
         <img src="img/Blitz.jpg" class="item-photo">
-        <h3>The Blitz Chicken Wrap</h3>
-        <h2>$9.49</h2>
+        <h3 class="menu-item-name">The Blitz Chicken Wrap</h3>
+        <h2 class="menu-item-price">$9.49</h2>
         <a href="#" class="btn-order" onclick="addItem(blitz)">Add to Order</a>
     </article>
     <article class="menu-item" id="bbq">
         <img src="img/bbq-ribs.jpg" class="item-photo">
-        <h3>Final Drive BBQ Ribs</h3>
-        <h2>$14.99</h2>
+        <h3 class="menu-item-name">Final Drive BBQ Ribs</h3>
+        <h2 class="menu-item-price">$14.99</h2>
         <a href="#" class="btn-order" onclick="addItem(bbq)">Add to Order</a>
     </article>
-    <article class="menu-item">
+    <article class="menu-item" id="hailmary">
         <img src="img/Hail-Mary-Steak.jpg" class="item-photo">
-        <h3>Hail Mary Steak</h3>
-        <h2>$16.99</h2>
-        <a href="#" class="btn-order">Add to Order</a>
+        <h3 class="menu-item-name">Hail Mary Steak</h3>
+        <h2 class="menu-item-price">$16.99</h2>
+        <a href="#" class="btn-order" onclick="addItem(hailmary)">Add to Order</a>
     </article>
 </section>
 
 <section class="menu" data-category="appetizers">
     <article class="menu-item" id="rookiesticks">
         <img src="img/Rookie-sticks.jpg" class="item-photo">
-        <h3>Rookie Mozzarella Sticks</h3>
-        <h2>$7.49</h2>
-        <a href="#" class="btn-order">Add to Order</a>
+        <h3 class="menu-item-name">Rookie Mozzarella Sticks</h3>
+        <h2 class="menu-item-price">$7.49</h2>
+        <a href="#" class="btn-order" onclick="addItem(rookiesticks)">Add to Order</a>
     </article>
     <article class="menu-item">
         <img src="img/Nachos.jpg" class="item-photo">
@@ -205,5 +205,7 @@
         <a href="#" class="btn-order">Add to Order</a>
 
 <script src="menu.js"></script>
+<script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+<script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
 </body>
 </html>
