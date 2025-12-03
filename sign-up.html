@@ -23,6 +23,9 @@
 
         <form class="sign-up" id="signupForm">
 
+            <input type="text" id="username" placeholder="Username" required>
+            <br><br>
+
             <input type="email" id="email" placeholder="Email" required>
             <br><br>
 
@@ -45,45 +48,13 @@
             <br><br>
 
             <input type="submit" class="btn btn-account" value="Create Account">
+            <div id="signup-error"></div>
 
         </form>
     </article>
 </header>
 
-<script>
-    document.getElementById("signupForm").addEventListener("submit", function(e) {
-        e.preventDefault();
-
-        const email = document.getElementById("email").value;
-        const phone = document.getElementById("phone").value;
-        const password = document.getElementById("password").value;
-        const confirmPassword = document.getElementById("confirm-password").value;
-
-        if (password !== confirmPassword) {
-            alert("Passwords do not match!");
-            return;
-        }
-
-        
-        const saveInfo = confirm("Would you like to save your information for next time?");
-
-        if (saveInfo) {
-            localStorage.setItem("underdogUser", JSON.stringify({
-                email: email,
-                phone: phone
-            }));
-        }
-
-        
-        localStorage.setItem("isLoggedIn", "true");
-        localStorage.setItem("loggedInEmail", email);
-
-        alert("Welcome to UnderDog! You are now logged in.");
-
-        
-        window.location.href = "index.html";
-    });
-</script>
+<script src="script.js"></script>
 
 </body>
 </html>

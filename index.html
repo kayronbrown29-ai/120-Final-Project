@@ -12,36 +12,28 @@
             <img src="img/thumbnail_underdog.png" class="nav-icon">
             <ul class="nav-links">
                 <li><a href="menu.html">Menu</a></li>
-                <li><a href="#">Delivery</a></li>
                 <li><a href="sign-up.html">Sign Up</a></li>
+                <li><a href="login.html">Login</a></li>
             </ul>
         </nav>
         <article class="main-title">
             <h1>UnderDog</h1>
             <h2>Where Flavor Meets Good Vibes & The City Comes alive</h2>
-            <a href="#" class="btn btn-main">Order Now</a>
-        </article>
-        <article class="main-title show-more">
-            <a href="#" class="show-more">
-            <h3>Show me more</h3>
-            <ion-icon name="arrow-down-outline"></ion-icon></a>
+            <a href="menu.html" class="btn btn-main">Order Now</a>
         </article>
     </header>
 
     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
-</body>
-</html>
-
-<script>
+    <script>
     const isLoggedIn = localStorage.getItem("isLoggedIn");
     const email = localStorage.getItem("loggedInEmail");
 
     if (isLoggedIn === "true") {
         document.querySelector(".nav-links").innerHTML = `
             <li><a href="index.html">Home</a></li>
-            <li><a href="#">Menu</a></li>
-            <li><a href="#">My Account</a></li>
+            <li><a href="menu.html">Menu</a></li>
+            <li><a href="my-account.html">My Account</a></li>
             <li><a href="#" onclick="logout()">Log Out</a></li>
         `;
 
@@ -56,5 +48,46 @@
         alert("Logged out");
         window.location.href = "index.html";
     }
+    </script>
+
+    <script>
+document.addEventListener("DOMContentLoaded", () => {
+    const menuContainer = document.getElementById("menuItems");
+    const menu = JSON.parse(localStorage.getItem("menu")) || [];
+
+    if (menu.length === 0) {
+        menuContainer.innerHTML = "<p>No menu items available yet.</p>";
+        return;
+    }
+
+    menuContainer.innerHTML = "";
+
+    menu.forEach(item => {
+        const div = document.createElement("div");
+        div.className = "menu-card";
+        div.innerHTML = `
+            <h3>${item.name}</h3>
+            <p>$${item.price}</p>
+        `;
+        menuContainer.appendChild(div);
+    });
+});
 </script>
+
+<button onclick="logout()" class="logout-btn">Logout</button>
+<button onclick="deleteAccount()" class="delete-account-btn" style="background-color: #ff6b6b; color: white; padding: 10px 15px; border: none; border-radius: 5px; cursor: pointer; margin-left: 10px;">Delete Account</button>
+
+<script>
+function logout() {
+    localStorage.removeItem("CurrentAdmin");
+    localStorage.removeItem("CurrentUser");
+    localStorage.removeItem("isLoggedIn");
+    localStorage.removeItem("loggedInEmail");
+    window.location.href = "login.html";
+}
+</script>
+
+
+</body>
+</html>
 

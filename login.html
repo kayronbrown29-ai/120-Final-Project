@@ -22,21 +22,22 @@
     <article class="account-form">
         <h1>Log In</h1>
 
-        <form id="loginForm">
+        <form id="login-form">
 
-            <input type="email" id="loginEmail" placeholder="Email" required>
+            <input type="text" id="nameoremail" placeholder="Username or Email" required>
             <br><br>
 
-            <input type="password" id="loginPassword" placeholder="Password" required>
+            <input type="password" id="password" placeholder="Password" required>
             <br><br>
 
             <input type="submit" class="btn btn-account" value="Log In">
+            <div id="login-error"></div>
 
         </form>
     </article>
 </header>
 
-<script>
+<!-- <script>
     document.getElementById("loginForm").addEventListener("submit", function(e) {
         e.preventDefault();
 
@@ -60,8 +61,9 @@
             alert("Email not found. Please try again or sign up.");
         }
     });
-</script>
+</script> -->
 
+<script src="script.js"></script>
 
 </body>
 </html>
