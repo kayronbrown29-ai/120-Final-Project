@@ -15,7 +15,12 @@
         <li class="login-item"><a href="login.html" style="text-decoration: none; color: inherit;">Log In</a></li>
         <li class="myaccount-item" style="display: none;"><a href="my-account.html" style="text-decoration: none; color: inherit;">My Account</a></li>
         <li class="logout-item" style="display: none;"><a href="#" onclick="logout(); return false;" style="text-decoration: none; color: inherit;">Log Out</a></li>
-        <li><a href="shopping-cart.html" style="text-decoration: none; color: inherit;">View Cart</a></li>
+        <li>
+            <a href="shopping-cart.html" class="view-cart-link" style="text-decoration: none; color: inherit; display:flex; align-items:center; gap:6px;">
+                <span class="cart-emoji">🛒</span>
+                <span class="inline-count" style="background:#e53935; color:#fff; border-radius:12px; padding:2px 6px; font-size:12px; display:none;">0</span>
+            </a>
+        </li>
     </ul>
 </nav>
 
@@ -92,6 +97,18 @@
         <h2 class="menu-item-price">$16.99</h2>
         <button class="btn-order" onclick="addItem('hailmary');">Add to Order</button>
     </article>
+     <article class="menu-item" id="lamb">
+        <img src="Lamb.jpg" class="item-photo">
+        <h3 class="menu-item-title">Lamb Chops Lineup</h3>
+        <h2 class="menu-item-price">$12.49</h2>
+        <button class="btn-order" onclick="addItem('lamb');">Add to Order</button>
+    </article>
+    <article class="menu-item" id="tenders">
+        <img src="Tenders.jpg" class="item-photo">
+        <h3 class="menu-item-title">Takeaway Tenders</h3>
+        <h2 class="menu-item-price">$7.49</h2>
+        <button class="btn-order" onclick="addItem('tenders');">Add to Order</button>
+    </article>
 </section>
 
 <section class="menu" data-category="appetizers">
@@ -128,23 +145,54 @@
         <h2 class="menu-item-price">$8.49</h2>
         <button class="btn-order" onclick="addItem('caesarsalad');">Add to Order</button>
     </article>
+
     <article class="menu-item" id="champfries">
         <img src="img/Champ-fries.jpg" class="item-photo">
         <h3 class="menu-item-title">Champion Loaded Fries</h3>
         <h2 class="menu-item-price">$6.99</h2>
         <button class="btn-order" onclick="addItem('champfries');">Add to Order</button>
     </article>
+
     <article class="menu-item" id="loadedpotatoes">
         <img src="img/Potatoes.jpg" class="item-photo">
         <h3 class="menu-item-title">Halftime Loaded Potatoes</h3>
         <h2 class="menu-item-price">$8.99</h2>
         <button class="btn-order" onclick="addItem('loadedpotatoes');">Add to Order</button>
     </article>
+
     <article class="menu-item" id="hotdog">
         <img src="img/hot-dog.jpg" class="item-photo">
         <h3 class="menu-item-title">The Underdog Hot Dog</h3>
         <h2 class="menu-item-price">$6.49</h2>
         <button class="btn-order" onclick="addItem('hotdog');">Add to Order</button>
+    </article>
+
+    <article class="menu-item" id="seasoned-fries">
+        <img src="seasoned-fries.jpg" class="item-photo">
+        <h3 class="menu-item-title">Regulation Fries</h3>
+        <h2 class="menu-item-price">$3.99</h2>
+         <button class="btn-order" onclick="addItem('seasoned-fries');">Add to Order</button>
+    </article>
+
+    <article class="menu-item" id="onion-rings">
+        <img src="onion.jpg" class="item-photo">
+        <h3 class="menu-item-title">The Rings Of Honor</h3>
+        <h2 class="menu-item-price">$4.49</h2>
+        <button class="btn-order" onclick="addItem('onion-rings');">Add to Order</button>
+    </article>
+
+ <article class="menu-item" id="mashed-madness">
+        <img src="Mashed.jpg" class="item-photo">
+        <h3 class="menu-item-title">Mashed Madness</h3>
+        <h2 class="menu-item-price">$3.99</h2>
+       <button class="btn-order" onclick="addItem('mashed-madness');">Add to Order</button>
+    </article>
+
+     <article class="menu-item" id="veggies">
+        <img src="veggies.jpg" class="item-photo">
+        <h3 class="menu-item-title">Victory Veggie Medley</h3>
+        <h2 class="menu-item-price">$4.99</h2>
+       <button class="btn-order" onclick="addItem('veggies');">Add to Order</button>
     </article>
 </section>
 
@@ -167,6 +215,12 @@
     <h2 class="menu-item-price">$13.99</h2>
     <button class="btn-order" onclick="addItem('lasagna');">Add to Order</button>
 </article>
+<article class="menu-item" id="jumping-jerk">
+    <img src="jerk.jpg" class="item-photo">
+    <h3 class="menu-item-title">Jumping Jerk Chicken Alfredo</h3>
+    <h2 class="menu-item-price">$12.99</h2>
+<button class="btn-order" onclick="addItem('jumping-jerk');">Add to Order</button>
+</article>
 
 </section>
 
@@ -177,6 +231,24 @@
         <h2 class="menu-item-price">$7.99</h2>
         <button class="btn-order" onclick="addItem('browniesundae');">Add to Order</button>
     </article>
+    <article class="menu-item" id="strikeout-strawberry">
+        <img src="strawberry.jpg" class="item-photo">
+        <h3 class="menu-item-title">Strikeout Strawberry Cheesecake</h3>
+        <h2 class="menu-item-price">$6.99</h2>
+       <button class="btn-order" onclick="addItem('strikeout-strawberry');">Add to Order</button>
+    </article>
+        <article class="menu-item" id="apple-pie">
+            <img src="apple.jpg" class="item-photo">
+            <h3 class="menu-item-title">Apple Pie a la Underdog</h3>
+            <h2 class="menu-item-price">$5.99</h2>
+           <button class="btn-order" onclick="addItem('apple-pie');">Add to Order</button>
+        </article>
+            <article class="menu-item" id="cookies-cream">
+                <img src="cookies.jpg" class="item-photo">
+                <h3 class="menu-item-title">Cookies & Cream Showdown</h3>
+                <h2 class="menu-item-price">$4.99</h2>
+                <button class="btn-order" onclick="addItem('cookies-cream');">Add to Order</button>
+            </article>
 </section>
 
 <section class="menu" data-category="drinks">
@@ -204,7 +276,84 @@
         <h2 class="menu-item-price">$0.99</h2>
         <button class="btn-order" onclick="addItem('water');">Add to Order</button>
     </article>
+    <article class="menu-item" id="dr-pepper">
+        <img src="dr.pepper.jpg" class="item-photo">
+        <h3 class="menu-item-title">Dr.pepper</h3>
+        <h2 class="menu-item-price">$2.99</h2>
+        <button class="btn-order" onclick="addItem('dr-pepper');">Add to Order</button>
+    </article>
+
+    <article class="menu-item" id="sprite">
+        <img src="sprite.jpg" class="item-photo">
+        <h3 class="menu-item-title">Sprite</h3>
+        <h2 class="menu-item-price">$2.49</h2>
+        <button class="btn-order" onclick="addItem('sprite');">Add to Order</button>
+    </article>
+        <article class="menu-item" id="moutain-dew">
+            <img src="dew.jpg" class="item-photo">
+            <h3 class="menu-item-title">Mountain Dew</h3>
+            <h2 class="menu-item-price">$2.49</h2>
+           <button class="btn-order" onclick="addItem('moutain-dew');">Add to Order</button>
+        </article>
+
+        <article class="menu-item" id="champ-coffee">
+            <img src="coffee.jpg" class="item-photo">
+            <h3 class="menu-item-title">A Champion's Coffee</h3>
+            <h2 class="menu-item-price">$2.99</h2>
+            <button class="btn-order" onclick="addItem('champ-coffee');">Add to Order</button>
+        </article>
 </section>
+</section>
+        <section class="menu" data-category="alcohol">
+    <article class="menu-item" id="beer">
+        <img src="beer.jpg" class="item-photo">
+        <h3 class="menu-item-title">All Star Beer</h3>
+        <h2 class="menu-item-price">$5.00</h2>
+        <button class="btn-order" onclick="addItem('beer');">Add to Order</button>
+    </article>
+<article class="menu-item" id="mvp-wine">
+    <img src="wine.jpg" class="item-photo">
+    <h3 class="menu-item-title">MVP Wine</h3>
+    <h2 class="menu-item-price">$7.00</h2>
+    <button class="btn-order" onclick="addItem('mvp-wine');">Add to Order</button>
+</article>
+<article class="menu-item" id="curveball-margaritas">
+    <img src="margarita.jpg" class="item-photo">
+    <h3 class="menu-item-title">The CurveBall Margaritas</h3>
+    <h2 class="menu-item-price">$8.00</h2>
+    <button class="btn-order" onclick="addItem('curveball-margaritas');">Add to Order</button>
+</article>
+<article class="menu-item" id="julio">
+    <img src="don.jpg" class="item-photo">
+    <h3 class="menu-item-title">Julio's Winning Shot</h3>
+    <h2 class="menu-item-price">$9.00</h2>
+    <button class="btn-order" onclick="addItem('julio');">Add to Order</button>
+</article>
+   <article class="menu-item" id="heavyweight-hen">
+        <img src="Henn.jpg" class="item-photo">
+        <h3 class="menu-item-title">Heavyweight Hen</h3>
+        <h2 class="menu-item-price">$10.00</h2>
+        <button class="btn-order" onclick="addItem('heavyweight-hen');">Add to Order</button>
+   </article>
+   <article class="menu-item" id="vodka">
+        <img src="vodka.jpg" class="item-photo">
+        <h3 class="menu-item-title">Victory Vodka</h3>
+        <h2 class="menu-item-price">$8.00</h2>
+        <button class="btn-order" onclick="addItem('vodka');">Add to Order</button>
+   </article>
+   <article class="menu-item" id="seagrams-fastbreak">
+        <img src="seagrams.jpg" class="item-photo">
+        <h3 class="menu-item-title">Seagram's Fastbreak</h3>
+        <h2 class="menu-item-price">$12.00</h2>
+        <button class="btn-order" onclick="addItem('seagrams-fastbreak');">Add to Order</button>
+   </article>
+   <article class="menu-item" id="rum">
+        <img src="rum.jpg" class="item-photo">
+        <h3 class="menu-item-title">Rumble rum</h3>
+        <h2 class="menu-item-price">$11.00</h2>
+        <button class="btn-order" onclick="addItem('rum');">Add to Order</button>
+   </article>
+        </section>
 
 <script src="cart.js"></script>
 <script src="menu.js"></script>
