@@ -74,7 +74,7 @@ if (loginForm) {
                     window.location.href = 'index.html';
                 }, 1500);
             } else {
-                errorDiv.textContent = 'Invalid admin credentials. Try username: admin, password: admin123';
+                errorDiv.textContent = 'Invalid admin credentials.';
                 errorDiv.style.color = '#ff6b6b';
                 errorDiv.style.marginTop = '10px';
             }
