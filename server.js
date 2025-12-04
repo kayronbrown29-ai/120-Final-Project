@@ -54,6 +54,9 @@ function persistUsersToDisk() {
 // Initialize users from disk at server start
 loadUsersFromDisk();
 
+// In-memory code storage for verification and password reset (disabled)
+// const verificationCodes = new Map();
+// const resetCodes = new Map();
 
 // [new] Simple signup without email verification
 app.post("/signup", async (req, res) => {
@@ -80,7 +83,6 @@ app.post("/signup", async (req, res) => {
   }
 });
 
-
 // Login endpoint
 app.post("/login", async (req, res) => {
   const { email, password } = req.body;
@@ -101,7 +103,6 @@ app.post("/login", async (req, res) => {
 
   res.json({ success: true, message: "Logged in successfully" });
 });
-
 
 // Reset password endpoint (simple, no code)
 app.post("/reset-password", async (req, res) => {

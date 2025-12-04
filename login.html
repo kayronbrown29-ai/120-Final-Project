@@ -37,32 +37,6 @@
     </article>
 </header>
 
-<!-- <script>
-    document.getElementById("loginForm").addEventListener("submit", function(e) {
-        e.preventDefault();
-
-        const email = document.getElementById("loginEmail").value;
-        const password = document.getElementById("loginPassword").value;
-
-        const savedUser = JSON.parse(localStorage.getItem("underdogUser"));
-
-        if (!savedUser) {
-            alert("No saved account found. Please sign up first.");
-            return;
-        }
-
-        if (email === savedUser.email) {
-            localStorage.setItem("isLoggedIn", "true");
-            localStorage.setItem("loggedInEmail", email);
-
-            alert("Login successful!");
-            window.location.href = "index.html";
-        } else {
-            alert("Email not found. Please try again or sign up.");
-        }
-    });
-</script> -->
-
 <script src="script.js"></script>
 
 </body>
