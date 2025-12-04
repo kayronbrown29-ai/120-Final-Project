@@ -12,7 +12,10 @@ nav{
     height:10vh;
     margin:0 auto;
     padding:0;
+    display:flex;
     flex-direction:row;
+    align-items:center;
+    justify-content:space-between;
 }
 
 img.nav-icon{
@@ -22,14 +25,12 @@ img.nav-icon{
 }
 
 ul.nav-links{
-    float:right;
     font-size:115%;
-    margin-top:35px;
     margin-right:75px;
     padding:0;
     list-style:none;
-    align-self:center;
-    padding:0;
+    display:flex;
+    gap:20px;
 }
 .nav-links li{
     display:inline-block;
@@ -190,4 +191,24 @@ label[for="newsletter"]{
 }
 .presenting img{
     max-width:100%;
+}
+footer{
+    background-color: #091429;
+    margin:0;
+    padding:0;
+    padding-top:3%;
+    padding-bottom:6%;
+}
+footer h2{
+    margin:0;
+    padding:0;
+    margin-bottom:2%;
+}
+footer p{
+    margin:0;
+    padding:0;
+}
+.width-container{
+    max-width:1140px;
+    margin:0 auto;
 }
