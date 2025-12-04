@@ -86,21 +86,29 @@ if (loginForm) {
 }
 
 function updateNavigation() {
+    // Prefer the explicit isLoggedIn flag, fallback to CurrentUser existence
+    const isLoggedIn = localStorage.getItem('isLoggedIn') === 'true';
     const CurrentUser = localStorage.getItem('CurrentUser');
-    const loginItem = document.qquerySelector('.login-item');
+
+    const loginItem = document.querySelector('.login-item');
     const signupItem = document.querySelector('.signup-item');
     const logoutItem = document.querySelector('.logout-item');
+    const myaccountItem = document.querySelector('.myaccount-item');
     const cartIcon = document.querySelector('.cart-icon');
 
-    if (CurrentUser) {
+    const logged = isLoggedIn || !!CurrentUser;
+
+    if (logged) {
         if (loginItem) loginItem.style.display = 'none';
         if (signupItem) signupItem.style.display = 'none';
         if (logoutItem) logoutItem.style.display = 'block';
+        if (myaccountItem) myaccountItem.style.display = 'block';
         if (cartIcon) cartIcon.style.display = 'block';
     } else {
         if (loginItem) loginItem.style.display = 'block';
         if (signupItem) signupItem.style.display = 'block';
         if (logoutItem) logoutItem.style.display = 'none';
+        if (myaccountItem) myaccountItem.style.display = 'none';
         if (cartIcon) cartIcon.style.display = 'none';
     }
 }
@@ -135,4 +143,20 @@ function deleteAccount() {
 
     alert('Your account has been deleted successfully.');
     window.location.href = 'index.html';
+}
+
+// Global logout function (used by multiple pages)
+function logout() {
+    localStorage.removeItem('CurrentUser');
+    localStorage.removeItem('isLoggedIn');
+    localStorage.removeItem('loggedInEmail');
+    // keep other localStorage data (like menu) intact
+    window.location.href = 'index.html';
+}
+
+// Ensure navigation updates on load
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', updateNavigation);
+} else {
+    updateNavigation();
 }

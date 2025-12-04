@@ -7,7 +7,7 @@
         .account-details {
             margin: 20px 0;
             padding: 20px;
-            background-color: #f5f5f5;
+            background-color: #ffffff;
             border-radius: 5px;
             max-width: 500px;
             margin-left: auto;
@@ -33,7 +33,7 @@
 
         .btn-logout {
             background-color: #4caf50;
-            color: white;
+            color: rgb(255, 255, 255);
             padding: 10px 20px;
             border: none;
             border-radius: 5px;
@@ -112,6 +112,9 @@
         }
         
         updateNavbar();
+        // Hide the small nav logout link on this page (we show a larger Log Out button below)
+        const navLogout = document.querySelector('.nav-links .logout-item');
+        if (navLogout) navLogout.style.display = 'none';
     </script>
 
     <br><br>
