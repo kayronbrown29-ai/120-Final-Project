@@ -52,11 +52,36 @@ if (loginForm) {
     loginForm.addEventListener('submit', function(e) {
         e.preventDefault();
 
-
         const nameorEmail = document.getElementById('nameoremail').value;
         const password = document.getElementById('password').value;
+        const isAdminLogin = document.getElementById('admin-login').checked;
         const errorDiv = document.getElementById('login-error');
 
+        // Admin login with hardcoded credentials
+        if (isAdminLogin) {
+            if (nameorEmail === 'admin' && password === 'admin123') {
+                localStorage.setItem('CurrentAdmin', JSON.stringify({
+                    username: 'admin',
+                    role: 'admin'
+                }));
+                localStorage.setItem('isLoggedIn', 'true');
+                localStorage.setItem('loggedInEmail', 'admin@underdog.com');
+                errorDiv.textContent = 'Admin login successful! Redirecting to...';
+                errorDiv.style.color = '#4caf50';
+                errorDiv.style.marginTop = '10px';
+
+                setTimeout(() => {
+                    window.location.href = 'index.html';
+                }, 1500);
+            } else {
+                errorDiv.textContent = 'Invalid admin credentials.';
+                errorDiv.style.color = '#ff6b6b';
+                errorDiv.style.marginTop = '10px';
+            }
+            return;
+        }
+
+        // Regular user login
         const users = JSON.parse(localStorage.getItem('users')) || [];
 
         const user = users.find(user => 

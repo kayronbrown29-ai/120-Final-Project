@@ -162,7 +162,7 @@ input[type="submit"]:hover{
 }
 input[type="submit"]{
     transition:background 0.2s, color 0.2s;
-    width:25%;
+    width:auto;
 }
 input[type="checkbox"]{
     width:2%;
@@ -236,6 +236,21 @@ main{
     background-color: #301f05;
     color: white;
 }
+
+/* Admin delete button for menu items */
+.btn-delete-item{
+    background:#ff6b6b;
+    color:#fff;
+    border:none;
+    padding:6px 8px;
+    border-radius:6px;
+    font-size:12px;
+    cursor:pointer;
+}
+.btn-delete-item:hover{
+    background:#ff5252;
+}
+
 .cart-container{
     display:flex;
     flex-direction:row;
@@ -354,7 +369,9 @@ nav {
 }
 
 .btn-account {
+    display: block;
     width: 100%;
+    max-width: 520px;
     padding: 15px;
     background: orange;
     color: #000;
@@ -364,6 +381,7 @@ nav {
     cursor: pointer;
     letter-spacing: 1px;
     transition: 0.3s;
+    margin: 0 auto;
 }
 
 .btn-account:hover {
