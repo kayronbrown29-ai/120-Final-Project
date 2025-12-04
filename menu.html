@@ -15,6 +15,7 @@
         <li class="login-item"><a href="login.html" style="text-decoration: none; color: inherit;">Log In</a></li>
         <li class="myaccount-item" style="display: none;"><a href="my-account.html" style="text-decoration: none; color: inherit;">My Account</a></li>
         <li class="logout-item" style="display: none;"><a href="#" onclick="logout(); return false;" style="text-decoration: none; color: inherit;">Log Out</a></li>
+        <li><a href="shopping-cart.html" style="text-decoration: none; color: inherit;">View Cart</a></li>
     </ul>
 </nav>
 
@@ -57,339 +58,157 @@
 <section class="menu" data-category="entrees">
     <article class="menu-item" id="burger">
         <img src="img/Burger.jpg" class="item-photo">
-        <h3 class="menu-item-name">The Comeback Burger</h3>
+        <h3 class="menu-item-title">The Comeback Burger</h3>
         <h2 class="menu-item-price">$10.99</h2>
-        <a href="#" class="btn-order" onclick="addItem(burger)">Add to Order</a>
+        <button class="btn-order" onclick="addItem('burger');">Add to Order</button>
     </article>
     <article class="menu-item" id="overtimewings">
         <img src="img/overtime-wings.jpg" class="item-photo">
-        <h3 class="menu-item-name">Overtime Buffalo Wings</h3>
+        <h3 class="menu-item-title">Overtime Buffalo Wings</h3>
         <h2 class="menu-item-price">$12.99</h2>
-        <a href="#" class="btn-order" onclick="addItem(overtimewings)">Add to Order</a>
+        <button class="btn-order" onclick="addItem('overtimewings');">Add to Order</button>
     </article>
-    <article class="menu-item">
+    <article class="menu-item" id="cheesesteak">
         <img src="img/Cheesesteak.jpg" class="item-photo">
-        <h3 class="menu-item-name">Fly High Philly Cheesesteak</h3>
+        <h3 class="menu-item-title">Fly High Philly Cheesesteak</h3>
         <h2 class="menu-item-price">$11.49</h2>
-        <a href="#" class="btn-order">Add to Order</a>
+        <button class="btn-order" onclick="addItem('cheesesteak');">Add to Order</button>
     </article>
     <article class="menu-item" id="blitz">
         <img src="img/Blitz.jpg" class="item-photo">
-        <h3 class="menu-item-name">The Blitz Chicken Wrap</h3>
+        <h3 class="menu-item-title">The Blitz Chicken Wrap</h3>
         <h2 class="menu-item-price">$9.49</h2>
-        <a href="#" class="btn-order" onclick="addItem(blitz)">Add to Order</a>
+        <button class="btn-order" onclick="addItem('blitz');">Add to Order</button>
     </article>
     <article class="menu-item" id="bbq">
         <img src="img/bbq-ribs.jpg" class="item-photo">
-        <h3 class="menu-item-name">Final Drive BBQ Ribs</h3>
+        <h3 class="menu-item-title">Final Drive BBQ Ribs</h3>
         <h2 class="menu-item-price">$14.99</h2>
-        <a href="#" class="btn-order" onclick="addItem(bbq)">Add to Order</a>
+        <button class="btn-order" onclick="addItem('bbq');">Add to Order</button>
     </article>
     <article class="menu-item" id="hailmary">
         <img src="img/Hail-Mary-Steak.jpg" class="item-photo">
-        <h3 class="menu-item-name">Hail Mary Steak</h3>
+        <h3 class="menu-item-title">Hail Mary Steak</h3>
         <h2 class="menu-item-price">$16.99</h2>
-        <a href="#" class="btn-order" onclick="addItem(hailmary)">Add to Order</a>
+        <button class="btn-order" onclick="addItem('hailmary');">Add to Order</button>
     </article>
 </section>
 
 <section class="menu" data-category="appetizers">
     <article class="menu-item" id="rookiesticks">
         <img src="img/Rookie-sticks.jpg" class="item-photo">
-        <h3 class="menu-item-name">Rookie Mozzarella Sticks</h3>
+        <h3 class="menu-item-title">Rookie Mozzarella Sticks</h3>
         <h2 class="menu-item-price">$7.49</h2>
-        <a href="#" class="btn-order" onclick="addItem(rookiesticks)">Add to Order</a>
+        <button class="btn-order" onclick="addItem('rookiesticks');">Add to Order</button>
     </article>
-    <article class="menu-item">
+    <article class="menu-item" id="nachos">
         <img src="img/Nachos.jpg" class="item-photo">
-        <h3>Dark Horse Nachos</h3>
-        <h2>$10.49</h2>
-        <a href="#" class="btn-order">Add to Order</a>
+        <h3 class="menu-item-title">Dark Horse Nachos</h3>
+        <h2 class="menu-item-price">$10.49</h2>
+        <button class="btn-order" onclick="addItem('nachos');">Add to Order</button>
     </article>
-    <article class="menu-item">
+    <article class="menu-item" id="quesadilla">
         <img src="img/Quesdilla.jpg" class="item-photo">
-        <h3>Wildcard Quesadilla</h3>
-        <h2>$8.99</h2>
-        <a href="#" class="btn-order">Add to Order</a>
+        <h3 class="menu-item-title">Wildcard Quesadilla</h3>
+        <h2 class="menu-item-price">$8.99</h2>
+        <button class="btn-order" onclick="addItem('quesadilla');">Add to Order</button>
     </article>
-    <article class="menu-item">
+    <article class="menu-item" id="pretzelbites">
         <img src="img/Pretzel-bites.jpg" class="item-photo">
-        <h3>MVP Pretzel Bites</h3>
-        <h2>$7.49</h2>
-        <a href="#" class="btn-order">Add to Order</a>
+        <h3 class="menu-item-title">MVP Pretzel Bites</h3>
+        <h2 class="menu-item-price">$7.49</h2>
+        <button class="btn-order" onclick="addItem('pretzelbites');">Add to Order</button>
     </article>
 </section>
 
 <section class="menu" data-category="sides">
-    <article class="menu-item">
+    <article class="menu-item" id="caesarsalad">
         <img src="img/Game-salad.jpg" class="item-photo">
-        <h3>Game Plan Caesar Salad</h3>
-        <h2>$8.49</h2>
-        <a href="#" class="btn-order">Add to Order</a>
+        <h3 class="menu-item-title">Game Plan Caesar Salad</h3>
+        <h2 class="menu-item-price">$8.49</h2>
+        <button class="btn-order" onclick="addItem('caesarsalad');">Add to Order</button>
     </article>
-    <article class="menu-item">
+    <article class="menu-item" id="champfries">
         <img src="img/Champ-fries.jpg" class="item-photo">
-        <h3>Champion Loaded Fries</h3>
-        <h2>$6.99</h2>
-        <a href="#" class="btn-order">Add to Order</a>
+        <h3 class="menu-item-title">Champion Loaded Fries</h3>
+        <h2 class="menu-item-price">$6.99</h2>
+        <button class="btn-order" onclick="addItem('champfries');">Add to Order</button>
     </article>
-    <article class="menu-item">
+    <article class="menu-item" id="loadedpotatoes">
         <img src="img/Potatoes.jpg" class="item-photo">
-        <h3>Halftime Loaded Potatoes</h3>
-        <h2>$8.99</h2>
-        <a href="#" class="btn-order">Add to Order</a>
+        <h3 class="menu-item-title">Halftime Loaded Potatoes</h3>
+        <h2 class="menu-item-price">$8.99</h2>
+        <button class="btn-order" onclick="addItem('loadedpotatoes');">Add to Order</button>
     </article>
-    <article class="menu-item">
+    <article class="menu-item" id="hotdog">
         <img src="img/hot-dog.jpg" class="item-photo">
-        <h3>The Underdog Hot Dog</h3>
-        <h2>$6.49</h2>
-        <a href="#" class="btn-order">Add to Order</a>
+        <h3 class="menu-item-title">The Underdog Hot Dog</h3>
+        <h2 class="menu-item-price">$6.49</h2>
+        <button class="btn-order" onclick="addItem('hotdog');">Add to Order</button>
     </article>
 </section>
 
 <section class="menu" data-category="pasta">
-    <article class="menu-item">
+    <article class="menu-item" id="alfredoavalanche">
         <img src="img/Two way alfredo.jpg" class="item-photo">
-        <h3>The Alfredo Avalanche (shrimp edition)</h3>
-        <h2>$15.49</h2>
-        <a href="#" class="btn-order">Add to Order</a>
+        <h3 class="menu-item-title">The Alfredo Avalanche (shrimp edition)</h3>
+        <h2 class="menu-item-price">$15.49</h2>
+        <button class="btn-order" onclick="addItem('alfredoavalanche');">Add to Order</button>
     </article>
-    <article class="menu-item">
+    <article class="menu-item" id="spaghetti">
         <img src="img/spaghetti.jpg" class="item-photo">
-        <h3>Hall of fame Spaghetti</h3>
-        <h2>$14.99</h2>
-        <a href="#" class="btn-order">Add to Order</a>
+        <h3 class="menu-item-title">Hall of fame Spaghetti</h3>
+        <h2 class="menu-item-price">$14.99</h2>
+        <button class="btn-order" onclick="addItem('spaghetti');">Add to Order</button>
     </article>
-<article class="menu-item">
+<article class="menu-item" id="lasagna">
     <img src="img/grid.jpg" class="item-photo">
-    <h3>Gridiron Lasagna</h3>
-    <h2>$13.99</h2>
-    <a href="#" class="btn-order">Add to Order</a>
+    <h3 class="menu-item-title">Gridiron Lasagna</h3>
+    <h2 class="menu-item-price">$13.99</h2>
+    <button class="btn-order" onclick="addItem('lasagna');">Add to Order</button>
 </article>
 
 </section>
 
 <section class="menu" data-category="desserts">
-    <article class="menu-item">
+    <article class="menu-item" id="browniesundae">
         <img src="img/victory.jpg" class="item-photo">
-        <h3>Victory Brownie Sundae</h3>
-        <h2>$7.99</h2>
-        <a href="#" class="btn-order">Add to Order</a>
+        <h3 class="menu-item-title">Victory Brownie Sundae</h3>
+        <h2 class="menu-item-price">$7.99</h2>
+        <button class="btn-order" onclick="addItem('browniesundae');">Add to Order</button>
     </article>
 </section>
 
 <section class="menu" data-category="drinks">
-    <article class="menu-item">
+    <article class="menu-item" id="icedtea">
         <img src="img/tea.jpg" class="item-photo">
-        <h3>Touchdown Iced Tea</h3>
-        <h2>$2.49</h2>
-        <a href="#" class="btn-order">Add to Order</a>
+        <h3 class="menu-item-title">Touchdown Iced Tea</h3>
+        <h2 class="menu-item-price">$2.49</h2>
+        <button class="btn-order" onclick="addItem('icedtea');">Add to Order</button>
     </article>
-    <article class="menu-item">
+    <article class="menu-item" id="lemonade">
         <img src="img/lemonade.jpg" class="item-photo">
-        <h3>End Zone Lemonade</h3>
-        <h2>$2.49</h2>
-        <a href="#" class="btn-order">Add to Order</a>
+        <h3 class="menu-item-title">End Zone Lemonade</h3>
+        <h2 class="menu-item-price">$2.49</h2>
+        <button class="btn-order" onclick="addItem('lemonade');">Add to Order</button>
     </article>
-    <article class="menu-item">
+    <article class="menu-item" id="pepsi">
         <img src="img/pepsi.jpg" class="item-photo">
-        <h3>Pepsi</h3>
-        <h2>$1.99</h2>
-        <a href="#" class="btn-order">Add to Order</a>
+        <h3 class="menu-item-title">Pepsi</h3>
+        <h2 class="menu-item-price">$1.99</h2>
+        <button class="btn-order" onclick="addItem('pepsi');">Add to Order</button>
     </article>
-    <article class="menu-item">
+    <article class="menu-item" id="water">
         <img src="img/waterr.jpg" class="item-photo">
-        <h3> Crystal Clear Water</h3>
-        <h2>$0.99</h2>
-        <a href="#" class="btn-order">Add to Order</a>
+        <h3 class="menu-item-title">Crystal Clear Water</h3>
+        <h2 class="menu-item-price">$0.99</h2>
+        <button class="btn-order" onclick="addItem('water');">Add to Order</button>
+    </article>
+</section>
 
+<script src="cart.js"></script>
 <script src="menu.js"></script>
 <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
 <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
 </body>
-<html>
-    <head>
-        <title>Document | Menu</title>
-        <link rel="stylesheet" href="style.css">
-    </head>
-    <body>
-        <nav class="standalone">
-            <img src="img/thumbnail_underdog.png" class="nav-icon">
-            <ul class="nav-links">
-                <li><a href="index.html">Home</a></li>
-                <li><a href="#">Menu</a></li>
-                <li><a href='sign-up.html'>Register</a></li>
-                <li><a href="login.html">Log In</a></li>
-            </ul>
-        </nav>
-        <main class="menu-page">
-            <h1>Menu</h1>
-            <section class="menu">
-                <article class="menu-item">
-                    <figure class="menu-img">
-                        <img src="img/Burger.jpg" class="item-photo">
-                    </figure>
-                    <h3>The Comeback Burger</h3>
-                    <h2>$10.99</h2>
-                    <a href="#" class="btn btn-order">Add to Order</a>
-                </article>
-                <article class="menu-item">
-                    <figure class="menu-img">
-                        <img src="img/overtme-wings.jpg" class="item-photo">
-                    </figure>
-                    <h3>Overtime Buffalo Wings</h3>
-                    <h2>$12.99</h2>
-                    <a href="#" class="btn btn-order">Add to Order</a>
-                </article>
-                <article class="menu-item">
-                    <figure class="menu-img">
-                        <img src="img/Tenders.jpg" class="item-photo">
-                    </figure>
-                    <h3>Sideline Chicken Tenders</h3>
-                    <h2>$9.99</h2>
-                    <a href="#" class="btn btn-order">Add to Order</a>
-                </article>
-                <article class="menu-item">
-                    <figure class="menu-img">
-                        <img src="img/Nachos.jpg" class="item-photo">
-                    </figure>
-                    <h3>Dark Horse Nachos</h3>
-                    <h2>$10.49</h2>
-                    <a href="#" class="btn btn-order">Add to Order</a>
-                </article>
-            </section>
-
-            <section class="menu">
-                <article class="menu-item">
-                    <figure class="menu-img">
-                        <img src="img/Quesdilla.jpg" class="item-photo">
-                    </figure>
-                    <h3>Wildcard Quesadilla</h3>
-                    <h2>$8.99</h2>
-                    <a href="#" class="btn btn-order">Add to Order</a>
-                </article>
-                <article class="menu-item">
-                    <figure class="menu-img">
-                        <img src="img/Cheesesteak.jpg" class="item-photo">
-                    </figure>
-                    <h3>The Fly High Philly Cheesesteak</h3>
-                    <h2>$11.49</h2>
-                    <a href="#" class="btn btn-order">Add to Order</a>
-                </article>
-                <article class="menu-item">
-                    <figure class="menu-img">
-                        <img src="img/Rookie-sticks.jpg" class="item-photo">
-                    </figure>
-                    <h3>Rookie Mozzarella Sticks</h3>
-                    <h2>$7.49</h2>
-                    <a href="#" class="btn btn-order">Add to Order</a>
-                </article>
-                <article class="menu-item">
-                    <figure class="menu-img">
-                        <img src="img/Blitz.jpg" class="item-photo">
-                    </figure>
-                    <h3> The Blitz Chicken Wrap</h3>
-                    <h2>$9.49</h2>
-                    <a href="#" class="btn btn-order">Add to Order</a>
-                </article>
-                  <article class="menu-item">
-                    <figure class="menu-img">
-                        <img src="img/bbq-ribs.jpg" class="item-photo">
-                    </figure>
-                    <h3>Final Drive BBQ Ribs</h3>
-                    <h2>$14.99</h2>
-                    <a href="#" class="btn btn-order">Add to Order</a>
-                </article>
-                  <article class="menu-item">
-                    <figure class="menu-img">
-                        <img src="img/hot-dog.jpg" class="item-photo">
-                    </figure>
-                    <h3>The Underdog Hot Dog</h3>
-                    <h2>$6.49</h2>
-                    <a href="#" class="btn btn-order">Add to Order</a>
-                </article>
-                  <article class="menu-item">
-                    <figure class="menu-img">
-                        <img src="img/Game-salad.jpg" class="item-photo">
-                    </figure>
-                    <h3>Game Plan Ceaser Salad</h3>
-                    <h2>$8.49</h2>
-                    <a href="#" class="btn btn-order">Add to Order</a>
-                </article>
-                  <article class="menu-item">
-                    <figure class="menu-img">
-                        <img src="img/Champ-fries.jpg" class="item-photo">
-                    </figure>
-                    <h3>Champion Loaded fries</h3>
-                    <h2>$6.99</h2>
-                    <a href="#" class="btn btn-order">Add to Order</a>
-                </article>
-                  <article class="menu-item">
-                    <figure class="menu-img">
-                        <img src="img/Two-tacos.jpg" class="item-photo">
-                    </figure>
-                    <h3>Two Miniute waning Tacos (2)</h3>
-                    <h2>$7.99</h2>
-                    <a href="#" class="btn btn-order">Add to Order</a>
-                </article>
-                  <article class="menu-item">
-                    <figure class="menu-img">
-                        <img src="img/Hail-Mary-Steak.jpg" class="item-photo">
-                    </figure>
-                    <h3>Hail Mary Steak</h3>
-                    <h2>$16.99</h2>
-                    <a href="#" class="btn btn-order">Add to Order</a>
-                </article>
-                  <article class="menu-item">
-                    <figure class="menu-img">
-                        <img src="img/Cluctch-pepperoni-pizza.jpg" class="item-photo">
-                    </figure>
-                    <h3>Clutch Pepperoni Pizza</h3>
-                    <h2>$10.49</h2>
-                    <a href="#" class="btn btn-order">Add to Order</a>
-                </article>
-                  <article class="menu-item">
-                    <figure class="menu-img">
-                        <img src="img/Pretzle-bites.jpg" class="item-photo">
-                    </figure>
-                    <h3>The MVP Pretzle Bites</h3>
-                    <h2>$7.49</h2>
-                    <a href="#" class="btn btn-order">Add to Order</a>
-                </article>
-                  <article class="menu-item">
-                    <figure class="menu-img">
-                        <img src="img/Mac-cheese.jpg" class="item-photo">
-                    </figure>
-                    <h3>Knockout Mac & Cheese</h3>
-                    <h2>$8.99</h2>
-                    <a href="#" class="btn btn-order">Add to Order</a>
-                </article>
-                  <article class="menu-item">
-                    <figure class="menu-img">
-                        <img src="img/Potatoes.jpg" class="item-photo">
-                    </figure>
-                    <h3>Halftime loaded Potatoes</h3>
-                    <h2>$8.99</h2>
-                    <a href="#" class="btn btn-order">Add to Order</a>
-                </article>
-                  <article class="menu-item">
-                    <figure class="menu-img">
-                        <img src="img/Two way alfredo.jpg" class="item-photo">
-                    </figure>
-                    <h3>The Two-Way Player Alfredo</h3>
-                    <h2>$15.49</h2>
-                    <a href="#" class="btn btn-order">Add to Order</a>
-                </article>
-                  <article class="menu-item">
-                    <figure class="menu-img">
-                        <img src="img/victory.jpg" class="item-photo">
-                    </figure>
-                    <h3>Victory Brownie Sundae</h3>
-                    <h2>$7.99</h2>
-                    <a href="#" class="btn btn-order">Add to Order</a>
-                </article>
-            </section>
-        </main>
-        <script src="menu.js"></script>
-    </body>
 </html>

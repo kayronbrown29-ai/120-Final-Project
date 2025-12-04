@@ -3,6 +3,7 @@
 <html>
     <head>
         <title>Document | Shopping Cart</title>
+        <link rel="stylesheet" href="cart.css">
         <link rel="stylesheet" href="shopping-cart.css">
     </head>
 
@@ -12,37 +13,51 @@
             <ul class="nav-links">
                 <li><a href="index.html">Home</a></li>
                 <li><a href="menu.html">Menu</a></li>
-                <li><a href='sign-up.html'>Sign Up</a></li>
+                <li><a href='sign-up.html'>Register</a></li>
                 <li><a href="login.html">Log In</a></li>
             </ul>
         </nav>
 
         <main class="cart-page">
-            <h1>Model Shopping Cart</h1>
+            <h1 class="space-it-plz">Shopping Cart</h1>
             <section class="cart-container">
                 <article class="cart-list">
-                    <!-- Items will be loaded here from localStorage -->
+                    <div class="cart-items"></div>
                 </article>
 
                 <aside class="price-total">
                     <div class="added-price">
                         <br>
                         <p>Items Subtotal</p>
-                        <h2>$0.00</h2>
+                        <h2 class="cart-subtotal">$0.00</h2>
                         <br>
                         <p>Taxes and fees</p>
-                        <h2>$0.00</h2>
+                        <h2 class="cart-tax">$0.00</h2>
                         <br>
                         <hr>
                         <br>
                         <p>Total</p>
-                        <h1>$0.00</h1>
+                        <h1 class="cart-total-price">Total Price: $0.00</h1>
                         <br>
                     </div>
                 </aside>
             </section>
         </main>
-        
+
+        <!-- Cart Item Template -->
+        <!-- <template id="cart-item-template">
+            <div class="cart-row">
+                <div class="cart-item cart-column">
+                    <img class="cart-item-image" width="100" height="100">
+                    <span class="cart-item-title"></span>
+                    <span class="cart-price"></span>
+                    <div class="cart-quantity">
+                        <input class="cart-quantity-input" type="number" min="1" value="1">
+                        <button class="btn btn-danger" type="button">REMOVE</button>
+                    </div>
+                </div>
+            </div>
+        </template> -->
         <script src="cart.js"></script>
     </body>
 </html>

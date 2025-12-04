@@ -101,11 +101,11 @@ main{
 .cart-item{
     display:flex;
     flex-direction:row;
-    align-content:center;
-    justify-content: center;
+    align-items:center;
+    justify-content: flex-start;
     gap:5%;
     background-color: #f5bd6a;
-    padding:0;
+    padding:1%;
     margin:0;
     color:#301f05;
 }
@@ -154,4 +154,21 @@ main{
 }
 .added-price hr{
     width: 95%;
+}
+.cart-quantity{
+    display:flex;
+    flex-direction:row;
+    gap:10px;
+    align-items:center;
+}
+.cart-quantity-input{
+    width:50px;
+}
+.cart-page{
+    height:75vh;
+    padding-top:2%;
+}
+.space-it-plz{
+    text-align:center;
+    margin-bottom:2%;
 }

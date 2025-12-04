@@ -16,6 +16,11 @@ function loadCart() {
 
 // Save cart to localStorage
 function saveCart() {
+    const cartContainer = document.querySelector('.cart-items');
+    if (!cartContainer) {
+        return; // Exit early if not on cart page
+    }
+    
     const cartRows = document.querySelectorAll('.cart-items .cart-row');
     const cartItems = [];
     
@@ -59,9 +64,13 @@ function updateTotal(){
     const tax = total * taxRate;
     const finalTotal = total + tax;
     
-    document.querySelector('.cart-subtotal').innerHTML = `$${total.toFixed(2)}`;
-    document.querySelector('.cart-tax').innerHTML = `$${tax.toFixed(2)}`;
-    document.querySelector('.cart-total-price').innerHTML = `Total Price: $${finalTotal.toFixed(2)}`;
+    const subtotalElement = document.querySelector('.cart-subtotal');
+    const taxElement = document.querySelector('.cart-tax');
+    const totalElement = document.querySelector('.cart-total-price');
+    
+    if(subtotalElement) subtotalElement.innerHTML = `$${total.toFixed(2)}`;
+    if(taxElement) taxElement.innerHTML = `$${tax.toFixed(2)}`;
+    if(totalElement) totalElement.innerHTML = `Total Price: $${finalTotal.toFixed(2)}`;
     
     saveCart();
 }
@@ -181,6 +190,11 @@ function createCartRow(name, priceValue, image, itemName, quantity = 1) {
 
 function toCart(name, priceValue, image, itemName) {
     let location = document.getElementsByClassName('cart-items')[0];
+    
+    if (!location) {
+        console.error('Cart container not found');
+        return;
+    }
 
     if (document.getElementById(itemName)) {
         alert('This item is already added in the cart');
@@ -201,9 +215,9 @@ function removeItem(itemId) {
 }
 
 function updateQuantity(value, price){
-    if(!isNaN(value) && value>0){
+    if(!isNaN(value) && value > 0){
         let checkValue = Math.floor(value);
-        price*checkValue;
+        let newPrice = price * checkValue;
         updateTotal();
     }
 }
