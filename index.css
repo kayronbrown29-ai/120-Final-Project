@@ -168,3 +168,26 @@ label[for="newsletter"]{
 .focalpoint{
     height:auto;
 }
+.width-limit{
+    max-width:1140px;
+    margin:0 auto;
+}
+.width-limit h1{
+    font-size:250%;
+}
+.width-limit p{
+    font-size: 150%;
+}
+.a-row{
+    display:flex;
+    flex-direction: row;
+    gap:5%;
+}
+.presenting{
+    width:25%;
+    margin:0;
+    padding:0;
+}
+.presenting img{
+    max-width:100%;
+}

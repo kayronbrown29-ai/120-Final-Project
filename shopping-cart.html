@@ -13,8 +13,6 @@
             <ul class="nav-links">
                 <li><a href="index.html">Home</a></li>
                 <li><a href="menu.html">Menu</a></li>
-                <li><a href='sign-up.html'>Register</a></li>
-                <li><a href="login.html">Log In</a></li>
             </ul>
         </nav>
 
@@ -39,6 +37,32 @@
                         <p>Total</p>
                         <h1 class="cart-total-price">Total Price: $0.00</h1>
                         <br>
+                        <button id="purchase-btn" class="btn btn-purchase">Purchase</button>
+                        <!-- Payment Modal -->
+                        <div id="payment-modal" class="modal" style="display:none; position:fixed; inset:0; background:rgba(0,0,0,0.5); align-items:center; justify-content:center;">
+                            <div class="modal-content" style="background:#fff; padding:20px; max-width:420px; width:90%; border-radius:8px;">
+                                <h2>Enter Payment Information</h2>
+                                <label>Cardholder Name</label>
+                                <input type="text" id="pay-name" placeholder="Name on card" style="width:100%; padding:8px; margin:6px 0;">
+                                <label>Card Number</label>
+                                <input type="text" id="pay-card" placeholder="1234 5678 9012 3456" style="width:100%; padding:8px; margin:6px 0;">
+                                <div style="display:flex; gap:8px;">
+                                    <div style="flex:1;">
+                                        <label>Expiry (MM/YY)</label>
+                                        <input type="text" id="pay-expiry" placeholder="MM/YY" style="width:100%; padding:8px; margin:6px 0;">
+                                    </div>
+                                    <div style="width:110px;">
+                                        <label>CVV</label>
+                                        <input type="text" id="pay-cvv" placeholder="123" style="width:100%; padding:8px; margin:6px 0;">
+                                    </div>
+                                </div>
+                                <div id="payment-error" style="color:#ff6b6b; margin-top:6px;"></div>
+                                <div style="display:flex; gap:8px; justify-content:flex-end; margin-top:12px;">
+                                    <button id="pay-cancel" class="btn">Cancel</button>
+                                    <button id="pay-submit" class="btn btn-purchase">Pay Now</button>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </aside>
             </section>
