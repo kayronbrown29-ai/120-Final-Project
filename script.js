@@ -89,6 +89,8 @@ if (loginForm) {
         );
 
         if (user) {
+            // Ensure any previous admin session is cleared when a regular user logs in
+            localStorage.removeItem('CurrentAdmin');
 
             localStorage.setItem('CurrentUser', JSON.stringify(user));
             localStorage.setItem('isLoggedIn', 'true');
@@ -175,6 +177,8 @@ function logout() {
     localStorage.removeItem('CurrentUser');
     localStorage.removeItem('isLoggedIn');
     localStorage.removeItem('loggedInEmail');
+    // Also clear admin flag on logout so delete buttons disappear
+    localStorage.removeItem('CurrentAdmin');
     // keep other localStorage data (like menu) intact
     window.location.href = 'index.html';
 }
