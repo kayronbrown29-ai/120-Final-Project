@@ -54,33 +54,78 @@ categoryButtons.forEach(button => {
     });
 
     const isAdmin = !!localStorage.getItem('CurrentAdmin');
-    if (!isAdmin) return; // only show delete buttons to admins
+    // (no debug logs) determine admin state
 
-    // Add delete buttons
-    document.querySelectorAll('.menu-item').forEach(item => {
-        const titleEl = item.querySelector('h3');
-        if (!titleEl) return;
-        const id = slugify(titleEl.textContent);
+    // Add delete buttons (only visible to admins)
+    if (isAdmin) {
+        document.querySelectorAll('.menu-item').forEach(item => {
+            const titleEl = item.querySelector('h3');
+            if (!titleEl) return;
+            const id = slugify(titleEl.textContent);
 
-        const del = document.createElement('button');
-        del.className = 'btn-delete-item';
-        del.textContent = 'Delete';
-        del.addEventListener('click', () => {
-            if (!confirm('Delete "' + titleEl.textContent + '" from the menu?')) return;
-            // persist
-            const list = JSON.parse(localStorage.getItem(removedKey) || '[]');
-            list.push(id);
-            localStorage.setItem(removedKey, JSON.stringify(list));
-            // remove from DOM
-            item.remove();
+            const del = document.createElement('button');
+            del.className = 'btn-delete-item';
+            del.textContent = 'Delete';
+            del.addEventListener('click', () => {
+                if (!confirm('Delete "' + titleEl.textContent + '" from the menu?')) return;
+                // persist
+                const list = JSON.parse(localStorage.getItem(removedKey) || '[]');
+                list.push(id);
+                localStorage.setItem(removedKey, JSON.stringify(list));
+                // remove from DOM
+                item.remove();
+            });
+
+            // place button at top-right of item
+            item.style.position = 'relative';
+            del.style.position = 'absolute';
+            del.style.top = '8px';
+            del.style.right = '8px';
+            item.appendChild(del);
         });
+    }
 
-        // place button at top-right of item
-        item.style.position = 'relative';
-        del.style.position = 'absolute';
-        del.style.top = '8px';
-        del.style.right = '8px';
-        item.appendChild(del);
-    });
+    // Render recent orders only for admins
+    if (isAdmin) {
+        try {
+            const orders = JSON.parse(localStorage.getItem('orders') || '[]');
+            const ordersPanel = document.createElement('section');
+            ordersPanel.id = 'admin-orders';
+            ordersPanel.style.background = '#fff7e6';
+            ordersPanel.style.padding = '12px';
+            ordersPanel.style.margin = '12px';
+            ordersPanel.style.borderRadius = '8px';
+            ordersPanel.innerHTML = '<h3>Recent Orders (Admin)</h3>';
+
+            if (!orders || orders.length === 0) {
+                const p = document.createElement('p');
+                p.textContent = 'No orders yet.';
+                ordersPanel.appendChild(p);
+            } else {
+                const table = document.createElement('table');
+                table.style.width = '100%';
+                table.style.borderCollapse = 'collapse';
+                table.innerHTML = `<thead><tr style="text-align:left"><th>Order ID</th><th>Name</th><th>Amount</th><th>When</th></tr></thead>`;
+                const tbody = document.createElement('tbody');
+                orders.slice().reverse().forEach(o => {
+                    const tr = document.createElement('tr');
+                    tr.style.borderTop = '1px solid #eee';
+                    tr.innerHTML = `<td style="padding:6px">${o.id}</td><td style="padding:6px">${o.name}</td><td style="padding:6px">$${(o.total||0).toFixed(2)}</td><td style="padding:6px">${new Date(o.time).toLocaleString()}</td>`;
+                    tbody.appendChild(tr);
+                });
+                table.appendChild(tbody);
+                ordersPanel.appendChild(table);
+            }
+
+            // Insert orders panel below the nav (before the main heading)
+            const h1 = document.querySelector('h1');
+            if (h1 && h1.parentNode) {
+                h1.parentNode.insertBefore(ordersPanel, h1.nextSibling);
+            } else {
+                document.body.insertBefore(ordersPanel, document.body.firstChild);
+            }
+        } catch (e) {
+            console.error('Failed to render admin orders', e);
+        }
+    }
 })();
-
