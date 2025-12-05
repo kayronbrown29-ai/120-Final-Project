@@ -29,23 +29,23 @@
     <main>
         <section class="width-limit">
             <h1>About Us</h1>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis nec feugiat mauris, non fringilla purus. Aenean dolor dolor, aliquet eu erat sit amet, lobortis rutrum dui. Curabitur molestie rutrum ante, eget tempus felis consectetur sed. Duis vulputate venenatis fringilla. Aliquam vel orci non tortor gravida vehicula. Vestibulum blandit felis sed dui suscipit, ac consectetur lectus semper.</p>
+            <p>Underdogs is a unique spot where great food and good vibes come together. Our restaurant and bar offer a welcoming space to enjoy bold flavors, handcrafted drinks, and an energetic urban atmosphere. Whether you’re here for a full meal or just drinks with friends, Underdogs is the place to unwind and have a good time.</p>
             <br>
             <h1>Highlights</h1>
             <div class="a-row">
-                <figure class="presenting">
+                <figure class="presenting" onclick="goToMenu('Touchdown Iced Tea')">
                     <img src="img/tea.jpg">
                     <figcaption>Touchdown Iced Tea</figcaption>
                 </figure>
-                <figure class="presenting">
+                <figure class="presenting" onclick="goToMenu('The Comeback Burger')">
                     <img src="img/Burger.jpg">
                     <figcaption>The Comeback Burger</figcaption>
                 </figure>
-                <figure class="presenting">
+                <figure class="presenting" onclick="goToMenu('Wildcard Quesadilla')">
                     <img src="img/Quesdilla.jpg">
                     <figcaption>Wildcard Quesadilla</figcaption>
                 </figure>
-                <figure class="presenting">
+                <figure class="presenting" onclick="goToMenu('Curveball Margaritas')">
                     <img src="img/margarita.jpg">
                     <figcaption>Curveball Margaritas</figcaption>
             </div>
@@ -94,7 +94,12 @@ document.addEventListener("DOMContentLoaded", () => {
 <button onclick="deleteAccount()" class="delete-account-btn" style="background-color: #ff6b6b; color: white; padding: 10px 15px; border: none; border-radius: 5px; cursor: pointer; margin-left: 10px;">Delete Account</button>
 
 <script>
-function logout() {
+function goToMenu(itemName) {
+    window.location.href = `menu.html?scroll=${encodeURIComponent(itemName)}`;
+}
+</script>
+
+<script>
     localStorage.removeItem("CurrentAdmin");
     localStorage.removeItem("CurrentUser");
     localStorage.removeItem("isLoggedIn");

@@ -253,3 +253,22 @@ const isAdmin = !!localStorage.getItem('CurrentAdmin');
                 item.appendChild(del);
             });
         })();
+
+// Handle scroll parameter from About Us page
+document.addEventListener('DOMContentLoaded', () => {
+    const params = new URLSearchParams(window.location.search);
+    const scrollTo = params.get('scroll');
+    if (scrollTo) {
+        // Find the item with matching name and scroll to it
+        const allItems = document.querySelectorAll('.menu-item');
+        for (let item of allItems) {
+            const titleEl = item.querySelector('h3');
+            if (titleEl && titleEl.textContent.trim() === decodeURIComponent(scrollTo)) {
+                setTimeout(() => {
+                    item.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                }, 100);
+                break;
+            }
+        }
+    }
+});
