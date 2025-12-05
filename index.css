@@ -19,9 +19,10 @@ nav{
 }
 
 img.nav-icon{
-    width:110px;
+    width:130px;
     height:auto;
-    margin-left: 25px;
+    margin-left: 30px;
+    margin-top: 0px;
 }
 
 ul.nav-links{
@@ -72,6 +73,33 @@ header{
 .main-bg{
     background-image:linear-gradient(rgba(0, 0, 0, 0.55)), url(img/Underdog.png);
     background-size: cover;
+}
+
+/* Homepage-specific: bring nav links and logo down for better spacing */
+.main-bg nav {
+    height: auto;
+    padding-top: 30px;
+    padding-bottom: 10px;
+    justify-content: space-between; /* restore original spacing */
+}
+.main-bg img.nav-icon {
+    /* restore original logo size for the homepage */
+    width: 130px;
+    height: auto;
+    margin-left: 30px;
+}
+
+.main-bg .nav-links {
+    /* slightly nudge links to the left while keeping original layout */
+    margin-left: 8px;
+    margin-right: 75px;
+    transform: translateX(-22px); /* increased nudge */
+}
+
+@media (max-width: 600px) {
+    .main-bg nav { padding-top: 18px; }
+    .main-bg img.nav-icon { width: 100px; }
+    .main-bg .nav-links { margin-left: 8px; gap: 12px; transform: translateX(-16px); }
 }
 
 .main-title{

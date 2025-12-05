@@ -229,26 +229,39 @@ main{
 .item-photo{
     width:100%;
 }
+/* Add-to-order button styling (larger tappable target) */
 .btn-order:link, .btn-order:visited{
-    color:white;
+    color: #fff;
+    background: #4d5774;
+    padding: 10px 14px;
+    border-radius: 8px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+    display: inline-block;
+    text-align: center;
 }
 .btn-order:hover{
-    background-color: #301f05;
-    color: white;
+    background-color: #3b4456;
+    color: #fff;
+    transform: translateY(-1px);
 }
 
 /* Admin delete button for menu items */
 .btn-delete-item{
-    background:#ff6b6b;
-    color:#fff;
-    border:none;
-    padding:6px 8px;
-    border-radius:6px;
-    font-size:12px;
-    cursor:pointer;
+    /* Explicit red delete button, larger and more prominent */
+    background: #e53935;
+    color: #fff;
+    border: none;
+    padding: 8px 12px; 
+    border-radius: 20px;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.2);
 }
 .btn-delete-item:hover{
-    background:#ff5252;
+    background: #c62828;
 }
 
 .cart-container{
@@ -301,7 +314,9 @@ nav {
 }
 
 .nav-icon {
-    width: 60px;
+    width: 300px;
+    height: auto;
+    margin-top: 50px;
 }
 
 .nav-links {

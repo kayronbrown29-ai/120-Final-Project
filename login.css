@@ -24,7 +24,9 @@ nav {
 }
 
 .nav-icon {
-    width: 60px;
+    width: 150px;
+    background: transparent;
+    mix-blend-mode: screen;
 }
 
 .nav-links {
