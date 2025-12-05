@@ -53,9 +53,55 @@
             <footer>
                 <div class="width-container">
                     <h2>Contact Us</h2>
-                    <p>UnderDog LLC</p>
-                    <p>800-588-2300</p>
-                    <p>noreply@gmail.com</p>
+                    <div class="contact-grid">
+                        <div class="contact-item">
+                            <span class="contact-icon">🏢</span>
+                            <p class="contact-label">Address</p>
+                            <p>UnderDog LLC</p>
+                        </div>
+                        <div class="contact-item">
+                            <span class="contact-icon">📞</span>
+                            <p class="contact-label">Phone</p>
+                            <p>800-588-2300</p>
+                        </div>
+                        <div class="contact-item">
+                            <span class="contact-icon">✉️</span>
+                            <p class="contact-label">Email</p>
+                            <p>noreply@gmail.com</p>
+                        </div>
+                    </div>
+                    <div class="feedback-section">
+                        <h3>Share Your Feedback</h3>
+                        <form id="feedback-form" class="feedback-form">
+                            <div class="form-group">
+                                <label for="feedback-name">Name</label>
+                                <input type="text" id="feedback-name" placeholder="Your name" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="feedback-email">Email</label>
+                                <input type="email" id="feedback-email" placeholder="your@email.com" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="feedback-rating">Rating</label>
+                                <select id="feedback-rating" required>
+                                    <option value="">Select a rating</option>
+                                    <option value="5">⭐ Excellent</option>
+                                    <option value="4">⭐ Good</option>
+                                    <option value="3">⭐ Average</option>
+                                    <option value="2">⭐ Poor</option>
+                                    <option value="1">⭐ Very Poor</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="feedback-message">Message</label>
+                                <textarea id="feedback-message" placeholder="Tell us what you think..." rows="5" required></textarea>
+                            </div>
+                            <button type="submit" class="btn btn-submit">Submit Feedback</button>
+                        </form>
+                        <div id="feedback-success" class="feedback-success" style="display:none;">
+                            <p>✓ Thank you for your feedback! We appreciate your input.</p>
+                        </div>
+                    </div>
                 </div>
             </footer>
     </main>
@@ -90,13 +136,54 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 </script>
 
-<button onclick="logout()" class="logout-btn">Logout</button>
-<button onclick="deleteAccount()" class="delete-account-btn" style="background-color: #ff6b6b; color: white; padding: 10px 15px; border: none; border-radius: 5px; cursor: pointer; margin-left: 10px;">Delete Account</button>
-
 <script>
 function goToMenu(itemName) {
     window.location.href = `menu.html?scroll=${encodeURIComponent(itemName)}`;
 }
+</script>
+
+<script>
+// Handle feedback form submission
+document.addEventListener('DOMContentLoaded', () => {
+    const feedbackForm = document.getElementById('feedback-form');
+    const successMsg = document.getElementById('feedback-success');
+    
+    if (feedbackForm) {
+        feedbackForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            
+            // Get form values
+            const name = document.getElementById('feedback-name').value.trim();
+            const email = document.getElementById('feedback-email').value.trim();
+            const rating = document.getElementById('feedback-rating').value;
+            const message = document.getElementById('feedback-message').value.trim();
+            
+            // Save feedback to localStorage
+            const feedbackList = JSON.parse(localStorage.getItem('feedback') || '[]');
+            const feedback = {
+                id: Date.now(),
+                name: name,
+                email: email,
+                rating: rating,
+                message: message,
+                timestamp: new Date().toLocaleString()
+            };
+            feedbackList.push(feedback);
+            localStorage.setItem('feedback', JSON.stringify(feedbackList));
+            
+            // Show success message
+            feedbackForm.style.display = 'none';
+            successMsg.style.display = 'block';
+            
+            // Reset form and hide success after 3 seconds
+            setTimeout(() => {
+                feedbackForm.reset();
+                feedbackForm.style.display = 'flex';
+                successMsg.style.display = 'none';
+            }, 3000);
+        });
+    }
+});
 </script>
 
 <script>
