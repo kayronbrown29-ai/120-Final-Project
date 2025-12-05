@@ -3,20 +3,19 @@ body{
     padding:0;
     display:flex;
     flex-direction:column;
-    background: linear-gradient(135deg, #2a1810 0%, #1a0f0a 100%);
+    background: linear-gradient(135deg, #ffd38a 0%, #b57a2a 45%, #3b220f 100%);
     font-family: 'Arial', sans-serif;
-    color: #efe7dc;
-    min-height: fit-content;
+    color: #2b1708;
+    min-height: 100vh;
 }
 .focalpoint{
     height:100vh;
 }
 .standalone{
-    background-color:#f5bd6a;
-    
+    background-color: rgba(245,189,106,0.06);
 }
 .standalone a{
-    color:#4d5774;
+    color:#4a2f1a;
 }
 nav {
     display: flex;
@@ -49,12 +48,13 @@ nav {
     width:100vw;
     height:auto;
 }
+.menu-page main,
 main{
-    background-color: #becbf5;
+    background: transparent;
     height:auto;
     margin:0;
     padding:0;
-    color:#4d5774;
+    color:#3b220f;
 }
 .menu-page h1{
     text-align:center;
@@ -71,10 +71,12 @@ main{
 }
 .menu-item{
     width:25%;
-    background-color: #f5bd6a;
+    background: linear-gradient(180deg, #fff7ec 0%, #f5e1c0 40%, #f5bd6a 100%);
     padding:1%;
     margin:1%;
-    color:#301f05;
+    color:#3b220f;
+    border-radius:8px;
+    box-shadow: 0 6px 14px rgba(59,34,15,0.08);
 }
 .menu-img{
     margin:0;
@@ -111,12 +113,12 @@ main{
     flex-direction:row;
     align-items:center;
     gap:14px;
-    background: linear-gradient(180deg, #ffffff 0%, #f8f5f0 100%);
+    background: linear-gradient(180deg, #fff7ec 0%, #f5e1c0 40%, #f5bd6a 100%);
     padding:14px;
     margin:0;
-    color:#301f05;
+    color:#3b220f;
     border-radius:10px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.12);
+    box-shadow: 0 4px 12px rgba(59,34,15,0.08);
     transition: all 0.3s ease;
 }
 .cart-item:hover {
@@ -160,24 +162,24 @@ main{
     align-items: center;
 }
 .price-total{
-    background: linear-gradient(180deg, #2b1a12 0%, #24130d 100%);
-    color:#efe7dc;
+    background: linear-gradient(180deg, #4a2f1a 0%, #2b1a12 100%);
+    color:#fff6e8;
     width:320px;
     height:fit-content;
     border-radius:10px;
     padding:20px;
-    box-shadow: 0 6px 18px rgba(0,0,0,0.2);
+    box-shadow: 0 6px 18px rgba(59,34,15,0.18);
 }
 .added-price p{
     padding:0;
     margin:8px 0;
-    color:#efe7dc;
+    color:#fff6e8;
     font-size:14px;
 }
 .added-price h2{
     padding:0;
     margin:6px 0;
-    color:#efe7dc;
+    color:#fff6e8;
     font-weight:600;
     font-size:16px;
 }
@@ -197,15 +199,15 @@ main{
 .btn-purchase {
     display:block;
     width:100%;
-    background: linear-gradient(90deg, #f5bd6a, #ffb347);
-    color:#301f05;
+    background: linear-gradient(90deg, #ffd38a, #f5bd6a);
+    color:#3b220f;
     padding:12px;
     border-radius:8px;
     border:none;
     font-weight:700;
     cursor:pointer;
     font-size:15px;
-    box-shadow: 0 6px 14px rgba(245,189,106,0.2);
+    box-shadow: 0 6px 14px rgba(245,189,106,0.18);
     transition: all 0.3s ease;
 }
 .btn-purchase:hover {
